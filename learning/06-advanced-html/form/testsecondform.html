@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input Attributes</title>
+  </head>
+  <body>
+    <form>
+      <label
+        >Nama :
+        <input type="tel" name="name" autocomplete="off" autofocus required />
+      </label>
+
+      <br />
+
+      <h3>Hobby</h3>
+      <label>
+        Olahraga
+        <input type="checkbox" name="hobby1" id="hobby1" , value="olahraga" />
+      </label>
+      <label>
+        Ngoding
+        <input type="checkbox" name="hobby2" id="hobby2" , value="ngoding" />
+      </label>
+
+      <h3>jenis kelamin</h3>
+      <label for="pria">
+        pria
+        <input type="radio" name="jenis_kelamin" id="pria" value="pria" />
+      </label>
+
+      <br />
+
+      <label for="wanita">
+        wanita
+        <input type="radio" name="jenis_kelamin" id="wanita" value="wanita" />
+      </label>
+
+      <br />
+      <button type="submit">Kirim</button>
+    </form>
+  </body>
+</html>
