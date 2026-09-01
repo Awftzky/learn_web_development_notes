@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan CSS Float</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #b28e2d;
+        padding: 40px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      a section {
+        background: white;
+        padding: 30px;
+        margin-bottom: 50px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        color: #1e40af;
+        border-bottom: 2px solid #e5e7eb;
+        padding-bottom: 10px;
+      }
+
+      .text-wrapping img {
+        margin-right: 20px;
+        margin-bottom: 10px;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .image-left {
+        float: left;
+      }
+
+      .image-right {
+        float: right;
+      }
+
+      .kolom-container {
+        background-color: #f8fafc;
+        padding: 10px;
+        border-radius: 8px;
+        overflow: auto;
+      }
+
+      .kolom {
+        float: left;
+        width: 31.33%;
+        margin: 1%;
+        padding: 20px;
+        background-color: #dbeafe;
+        border: 1px solid #bfdbfe;
+        min-height: 200px;
+        text-align: center;
+      }
+
+      .gallery-container {
+        padding: 10px;
+        background-color: #f8fafc;
+        overflow: auto;
+      }
+
+      .gallery-item {
+        float: left;
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+        background-color: #eee;
+        border: 2px solid #ddd;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .footer-note {
+        background-color: #1e293b;
+        color: #f1f5f9;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Eksperimen CSS Float</h1>
+
+    <section class="text-wrapping">
+      <h2>1. Text Wrapping</h2>
+      <img
+        src="../13-css-basic-layouting/assets/image.jpg"
+        alt="Gambar 1"
+        class="image-left image-crop"
+      />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
+        recusandae beatae minus facilis saepe libero vitae incidunt tenetur
+        odio, ipsa eos modi ullam a quidem. Aut nobis ratione consequatur. Enim,
+        facere optio ullam dolore quaerat nemo explicabo quod ratione quae saepe
+        corrupti qui veritatis suscipit itaque non veniam. Sequi a reprehenderit
+        provident. Dignissimos dolores aperiam voluptate totam obcaecati
+        asperiores, aliquid consequatur, nihil aut quibusdam temporibus animi
+        laborum alias in tempore modi amet. Esse iusto repudiandae a quisquam!
+        Numquam veniam non ipsa blanditiis corrupti aspernatur quia, commodi
+        accusamus. Laboriosam dolore reprehenderit soluta laudantium, dolor cum
+        voluptatum possimus assumenda, illo nemo voluptatibus veritatis veniam
+        modi sunt deleniti et minima error, nostrum expedita nesciunt corporis
+        molestias sed commodi. Asperiores atque numquam similique enim ratione
+        omnis impedit eligendi voluptatibus aspernatur nulla, nam optio dolorum.
+        Praesentium dolores natus sunt nihil rem labore! Beatae consectetur
+        deserunt hic veniam sint architecto doloremque, aspernatur voluptatibus
+        reiciendis facilis necessitatibus adipisci natus iusto. Beatae,
+        voluptatem impedit. A dolorum tempora illo consequatur, possimus sit
+        nisi omnis? Magni reiciendis iure excepturi omnis numquam, beatae ipsa
+        asperiores, odio nam assumenda hic, doloribus impedit! Reiciendis
+        sapiente asperiores iste mollitia odio pariatur, aspernatur autem
+        dolores quis temporibus aliquam nisi officia. Expedita, rerum unde eaque
+        in exercitationem nam ex nemo, maiores corrupti commodi odit itaque quod
+        vero sequi, consequatur illum ducimus velit voluptates minima excepturi!
+        Quo hic soluta illum voluptatibus eligendi aperiam numquam repudiandae
+        perferendis magnam. Deleniti odio nostrum nemo temporibus quo enim
+        repellendus iure nulla molestiae, facilis exercitationem obcaecati
+        beatae blanditiis, fugit voluptatibus perspiciatis minima. Nihil at nisi
+        accusantium rem expedita tempora earum inventore harum vel. Dolore
+        impedit earum neque, officiis assumenda commodi optio minus quisquam
+        asperiores aliquam, praesentium cupiditate veniam vel. Numquam nisi vel,
+        voluptatem vitae dignissimos possimus voluptates cupiditate similique
+        non quod facere a obcaecati veniam repellat neque? Iusto id provident
+        voluptates illo praesentium veniam, eius excepturi, harum saepe esse
+        ducimus? Inventore non, nesciunt id dolorem provident voluptates,
+        reiciendis expedita enim illum autem ea! Accusamus nisi dignissimos, qui
+        inventore, voluptas voluptatem suscipit tempora delectus officia
+        voluptatibus ea quidem distinctio reprehenderit doloremque
+        necessitatibus et laboriosam minus hic ex tempore! Officiis natus
+        voluptas facere, atque minima nam. Ducimus eveniet nulla non expedita
+        corporis aperiam reiciendis nostrum in quis numquam, sunt aspernatur vel
+        dolore, ipsum laboriosam atque dolores earum sed. Ipsa rem
+        exercitationem corrupti harum quos impedit, blanditiis autem voluptas et
+        commodi eligendi ea nostrum corporis sint consectetur totam numquam.
+        Fugiat dolores fugit dicta blanditiis, possimus velit asperiores porro
+        rem provident. Tenetur voluptatum eos placeat animi laudantium, laborum
+        aliquid perspiciatis hic incidunt maiores in laboriosam soluta optio
+        quidem minima temporibus consequuntur debitis velit reiciendis. Quod
+        soluta perferendis cumque voluptatem voluptate aut debitis. Aperiam
+        corporis doloribus mollitia, iusto commodi iste deserunt quis eligendi
+        quaerat laudantium aliquid veniam facere ratione! Nesciunt perferendis
+        magnam odio sequi totam aliquid minus alias, laboriosam itaque non vel
+        aperiam sunt qui, error incidunt unde consequuntur quas tempore maiores
+        iusto officia, in sapiente corrupti? Perspiciatis, placeat architecto?
+        Voluptates architecto ex vel cumque fugiat, iusto non quae, eos deserunt
+        eligendi odio, asperiores repellat quod. Magnam.
+      </p>
+
+      <img
+        src="../13-css-basic-layouting/assets/image.jpg"
+        alt="Gambar 2"
+        class="image-right image-crop"
+      />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa ab quo
+        expedita inventore, accusamus quia ratione vel beatae aperiam itaque
+        modi quis quae ipsa iure repellendus repellat sed eligendi temporibus.
+        At repellat tempore nobis culpa numquam, molestiae minima omnis nisi rem
+        atque. Laborum temporibus quaerat odit tempore dolore quidem
+        reprehenderit ducimus mollitia aspernatur velit aliquam cupiditate unde
+        id consequuntur, illum vero doloremque modi architecto maiores
+        voluptatum suscipit explicabo, similique at blanditiis? Saepe autem sed
+        voluptatem. Magnam eos eum placeat ut facere eius quos provident dolore
+        illum sunt beatae, minus repudiandae saepe animi soluta reprehenderit
+        nobis? Nostrum eaque doloribus impedit nulla exercitationem alias
+        reprehenderit iusto, maiores asperiores illum facere blanditiis quisquam
+        tempore labore? Nostrum voluptas ullam harum laborum dicta, iusto
+        placeat obcaecati, cupiditate explicabo unde blanditiis cumque. Aliquam
+        et accusamus ipsum quam tempore tempora nihil debitis. Consequuntur
+        dolorem repellat numquam pariatur? Omnis explicabo quis vel deleniti
+        quos aliquam aspernatur harum nostrum ipsam deserunt labore sapiente,
+        sit architecto ex! Quas facilis ex minima recusandae, sapiente
+        distinctio at excepturi quam nesciunt magnam, molestias dicta suscipit
+        quasi saepe sint laborum maxime ipsum itaque magni doloribus animi
+        deleniti reprehenderit? Provident voluptate tempore ratione fuga non,
+        porro sapiente. Dolores quod dolorum ipsam ullam tempore quibusdam
+        voluptatem expedita deleniti vel veniam consequuntur, voluptas quidem ad
+        odit, qui eius debitis? Maxime, sit? Eos, temporibus dignissimos totam
+        nemo cupiditate optio amet explicabo officia asperiores, repellendus,
+        aspernatur voluptates? Ipsum reprehenderit eos laudantium nulla
+        accusamus quam blanditiis! Repudiandae possimus ducimus eum molestiae
+        vitae corrupti iste eaque dolorum quisquam, facere repellat impedit
+        sapiente quam sequi recusandae placeat nihil consequuntur ratione
+        accusantium ad officiis qui illum ut! Ut, optio. Natus, quas, nam
+        dolorum similique, neque expedita fuga quisquam eum eligendi et non
+        architecto cumque officia soluta nesciunt fugit quaerat adipisci
+        debitis. Ullam corporis quae quam quod iure, architecto suscipit
+        expedita quos consectetur. Delectus ratione ipsa ea eaque temporibus
+        corrupti deleniti voluptatem, veritatis facilis molestias aliquid ut
+        natus reprehenderit atque, saepe beatae facere velit unde? Inventore
+        libero tempora debitis suscipit et laboriosam earum eius aspernatur
+        eligendi, harum error maiores recusandae quia obcaecati doloribus ipsum
+        nesciunt aliquam facere quaerat sit ducimus? Possimus natus aliquam
+        rerum aperiam autem temporibus dicta repellat consequuntur architecto,
+        explicabo sunt quo placeat, animi perferendis optio eum doloremque
+        libero rem voluptatem totam aspernatur praesentium ipsam fugit
+        accusamus. Similique magni ullam iusto doloribus dicta fugiat numquam
+        pariatur omnis cum quas dignissimos, incidunt suscipit autem ab soluta
+        accusantium rem doloremque dolorum laboriosam, tempore amet, officia eos
+        sunt architecto. Voluptatem, deserunt voluptas? Hic magni iusto
+        quibusdam molestias esse nemo, inventore a odit sint aut consectetur
+        error, accusamus quam tempora laborum laboriosam porro soluta sed quas
+        perspiciatis distinctio ipsum in! Aliquam, recusandae! Saepe maiores
+        fuga ipsum aliquid. Commodi placeat esse neque natus sapiente nobis
+        necessitatibus repellendus incidunt sit sequi nostrum repellat
+        reprehenderit velit ad nulla magni voluptatum, assumenda alias
+        asperiores! Reiciendis laudantium explicabo eos, incidunt quisquam
+        voluptates delectus tempora ab, sunt mollitia harum consequatur tenetur
+        perferendis blanditiis dolores, minus autem? Consectetur modi nesciunt
+        porro molestiae tenetur excepturi animi tempora, voluptates eos, impedit
+        maiores, perferendis id quae?
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Layout 3 Kolom</h2>
+      <div class="kolom-container">
+        <div class="kolom">
+          <h3>Kolom 1</h3>
+          <p>ini kolom sebelah kiri</p>
+        </div>
+        <div class="kolom">
+          <h3>Kolom 2</h3>
+          <p>ini kolom tengah</p>
+        </div>
+        <div class="kolom">
+          <h3>Kolom 3</h3>
+          <p>ini kolom sebelah kanan</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Image Gallery</h2>
+      <div class="gallery-container">
+        <div class="gallery-item">
+          <img
+            src="../13-css-basic-layouting/assets/image.jpg"
+            alt="Gallery 1"
+            class="image-crop"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="../13-css-basic-layouting/assets/image.jpg"
+            alt="Gallery 2"
+            class="image-crop"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="../13-css-basic-layouting/assets/image.jpg"
+            alt="Gallery 3"
+            class="image-crop"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="../13-css-basic-layouting/assets/image.jpg"
+            alt="Gallery 4"
+            class="image-crop"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="../13-css-basic-layouting/assets/image.jpg"
+            alt="Gallery 5"
+            class="image-crop"
+          />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
