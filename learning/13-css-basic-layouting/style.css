@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #203d43;
+  font-family: Inter, arial, sans-serif;
+}
+
+/* 
+  --primary: #CDFF9B;
+  --secondary: #203D43; 
+  */
+
+/* PROMO SECTION */
+header .promo-banner {
+  text-align: center;
+  background-color: orange;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 5px;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.3);
+}
+
+/* NAV BAR SECTION */
+header .nav-bar {
+  position: sticky;
+  z-index: 1000;
+  background-color: #cdff9b;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #1a1a1a;
+}
+header .nav-links {
+  float: right;
+  list-style: none;
+}
+header .nav-links li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+header .nav-bar .nav-logo {
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+header .nav-links .nav-button {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: bold;
+  gap: 5px;
+}
+
+main {
+  text-align: center;
+}
+
+/* ABOUT SECTION */
+main .about-section {
+  margin-top: 20px;
+  display: inline-block;
+  background-color: #2a5058;
+  width: 700px;
+  height: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.5);
+}
+
+main .about-section img {
+  float: left;
+  width: 150px;
+  height: 100px;
+  border-radius: 10px;
+  border: 1px solid #cdff9b;
+}
+
+main .about-section .about-description {
+  color: whitesmoke;
+}
+
+/* LIVE STREAMING SECTION */
+main .live-stream-section {
+  margin: 30px;
+}
+
+main .live-stream-section .profile-wrapper {
+  position: relative;
+  width: 500px;
+  height: 500px;
+
+  margin: 0 auto;
+}
+main .live-stream-section .profile-wrapper .profile-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+  border: 2px solid whitesmoke;
+}
+
+main .live-stream-section .profile-wrapper .badge {
+  position: absolute;
+  background-color: red;
+  color: whitesmoke;
+  font-size: 0.9em;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.5);
+  padding: 10px 20px;
+  top: 20px;
+  right: 20px;
+}
+
+main .streaming-schedule-section {
+  background-color: #2a5058;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.5);
+  border: 1px dotted #cdff9b;
+  margin: 0 auto;
+  width: 800px;
+  padding: 40px 30px;
+  border-radius: 10px;
+}
+
+/* STREAMING SCHEDULE */
+main .streaming-schedule-section h3 {
+  color: white;
+}
+
+main .streaming-schedule-section .streaming-list {
+  list-style: none;
+  color: whitesmoke;
+}
+main .streaming-schedule-section .streaming-list li {
+  margin-top: 30px;
+}
+
+main .streaming-schedule-section .streaming-list b {
+  color: #cdff9b;
+}
+
+main .streaming-schedule-section .streaming-list li:nth-child(even) {
+  background-color: #203d43;
+  border-radius: 10px;
+  height: 50px;
+  line-height: 50px;
+}
+
+/* HIGHTLIGHT */
+main .gallery {
+  display: inline-block;
+  margin-top: 50px;
+  margin-left: 30px;
+}
+
+main .gallery h2 {
+  background-color: transparent;
+
+  border-left: 10px solid #cdff9b;
+
+  color: whitesmoke;
+
+  padding: 10px 20px;
+}
+
+main .gallery .video-item {
+  margin-top: 20px;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  background-color: #2a5058;
+  border: 1px solid whitesmoke;
+  min-height: 200px;
+}
+
+main .gallery .video-item img {
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+}
+main .gallery .video-item:hover {
+  cursor: pointer;
+}
+
+/* CHAT SUPPORT BUTTON */
+.chat-button {
+  position: fixed;
+  z-index: 1000;
+
+  background-color: #cdff9b;
+  color: #203d43;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.5);
+
+  text-decoration: none;
+
+  border-radius: 50%;
+
+  padding: 7px 14px;
+  font-size: 2em;
+  bottom: 50px;
+  right: 50px;
+
+  transition: all 0.3s ease;
+}
+
+.chat-button:hover {
+  transform: scale(1.05) translateY(-5px);
+  background-color: #e1fec3;
+}
