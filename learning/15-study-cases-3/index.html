@@ -27,8 +27,8 @@
       <!-- BAGIAN 2 HERO SECTION -->
       <section id="home" class="home-section">
         <h2>Neon Nights Music Festival</h2>
-        <h3>3 Days. 6 Indonesian Artists. Infinite Vibes</h3>
-        <h4>June 15-17, 2026 | Jakarta International Expo</h4>
+        <h4>3 Days. 6 Indonesian Artists. Infinite Vibes</h3>
+        <p>June 15-17, 2026 | Jakarta International Expo</p>
         <a href="#tickets">Get Tickets</a>
       </section>
       <!-- BAGIAN 3 ABOUT SECTION -->
@@ -40,16 +40,13 @@
             dirancang sebagai perayaan musik, komunitas, dan suasana malam yang
             energik, dengan lineup, jadwal panggung, tiket, dan galeri sebagai
             bagian utama pengalaman pengunjung.
-            <br />
+          </p>
+          <p>  
             Festival ini diselenggarakan pada 15–17 Juni 2026 di Jakarta
             International Expo. Selama tiga hari, pengunjung bisa menikmati
             konser, merasakan “infinite vibes” dari neon nights, dan merayakan
             karya musisi Indonesia dalam satu ruang festival yang ramah untuk
-            pecinta musik dari berbagai kalangan.
-          </p>
-        </article>
-
-        <article>
+            pecinta musik dari berbagai kalangan.</p>
           <p>
             Neon Nights adalah tema visual dan suasana WPU StreamFest 2026:
             malam yang terang oleh lampu neon, LED, dan warna elektrik seperti
@@ -57,7 +54,8 @@
             kota — energetik, fotogenik, dan penuh “vibe” yang mudah dibagikan
             di media sosial. Musik jadi pusat acara, tapi pengalaman malam
             (cahaya, komunitas, dan momen bersama) sama pentingnya.
-            <br />
+          </p>
+          <p>
             Target audiencenya Gen Z: pecinta musik Indonesia yang aktif di
             sosial media, suka pengalaman imersif, dan lebih nyaman dengan hal
             yang praktis serta ramah lingkungan. Karena itu StreamFest 2026
@@ -75,7 +73,9 @@
       <!-- BAGIAN 4 LINE UP ARTIST -->
       <section id="lineup" class="lineup-section">
         <h3>Artist lineup</h3>
-        <figure>
+        <div class="lineup-grid">
+        <figure class="artist-card">
+          <div class="day-badge">Day 1</div>
           <img src="assets/images/hindia.jpg" alt="Hindia" width="200" />
           <figcaption>
             <h4>Hindia</h4>
@@ -85,7 +85,8 @@
             </p>
           </figcaption>
         </figure>
-        <figure>
+        <figure class="artist-card">
+          <div class="day-badge">Day 1</div>
           <img src="assets/images/bernadya.jpg" alt="Bernadya" width="200" />
           <figcaption>
             <h4>Bernadya</h4>
@@ -95,14 +96,16 @@
             </p>
           </figcaption>
         </figure>
-        <figure>
+        <figure class="artist-card">
+          <div class="day-badge">Day 2</div>
           <img src="assets/images/pamungkas.jpg" alt="Pamungkas" width="200" />
           <figcaption>
             Pamungkas membawa groove yang santai tapi memukau, membuat panggung
             terasa seperti konser malam yang penuh gaya.
           </figcaption>
         </figure>
-        <figure>
+        <figure class="artist-card">
+                  <div class="day-badge">Day 2</div>
           <img
             src="assets/images/juicyluicy.jpg"
             alt="JuicyLuicy"
@@ -113,7 +116,8 @@
             Nights menjadi karaoke raksasa di bawah lampu LED.
           </figcaption>
         </figure>
-        <figure>
+        <figure class="artist-card">
+          <div class="day-badge">Day 2</div>
           <img
             src="assets/images/nadinamizah.jpg"
             alt="NadinAmizah"
@@ -124,201 +128,199 @@
             memberi jeda emosional di antara lampu magenta dan cyan.
           </figcaption>
         </figure>
-        <figure>
+        <figure class="artist-card">
+          <div class="day-badge">Day 3</div>
           <img src="assets/images/feast.jpg" alt="Feast" width="200" />
           <figcaption>
             .Feast meledakkan malam dengan riff yang lantang dan semangat
             kolektif, menutup StreamFest dengan energi yang tak mudah dilupakan.
           </figcaption>
         </figure>
+        </div>
       </section>
 
       <!-- BAGIAN 5 TABLE SCHEDULE JADWAL -->
-      <table id="schedule">
-        <thead>
-          <tr>
-            <td><strong>Hari</strong></td>
-            <td><strong>Waktu</strong></td>
-            <td><strong>Artist/Kegiata</strong></td>
-            <td><strong>Stage</strong></td>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- TANGGAL 15  -->
-          <tr>
-            <td rowspan="2">15 Juni</td>
-            <td>19.00-20-30</td>
-            <td>Nadin Amizah</td>
-            <td>Chill Zone</td>
-          </tr>
-          <tr>
-            <td>21.00-22-30</td>
-            <td>Hindia</td>
-            <td>Main Stage</td>
-          </tr>
-          <!-- TANGGAL 16  -->
-          <tr>
-            <td rowspan="2">16 Juni</td>
-            <td>18.30-20-00</td>
-            <td>Bernadya</td>
-            <td>Side Stage</td>
-          </tr>
-          <tr>
-            <td>20.30-22-30</td>
-            <td>Pamungkas</td>
-            <td>Main Stage</td>
-          </tr>
-          <!-- TANGGAL 17  -->
-          <tr>
-            <td rowspan="2">17 Juni</td>
-            <td>18.00-19-30</td>
-            <td>Juicy Lucy</td>
-            <td>Side Stage</td>
-          </tr>
-          <tr>
-            <td>20.00-22-30</td>
-            <td>Feast</td>
-            <td>Main Stage</td>
-          </tr>
-        </tbody>
-      </table>
+  <section class="schedule-section">
+  <h3>Event Schedule</h3>
+
+  <div class="schedule-table-wrapper">
+    <table id="schedule" class="schedule-table">
+
+      <thead>
+        <tr>
+          <th>Hari</th>
+          <th>Waktu</th>
+          <th>Artist/Kegiatan</th>
+          <th>Stage</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <!-- TANGGAL 15 -->
+        <tr>
+          <td rowspan="2">15 Juni</td>
+          <td>19.00-20.30</td>
+          <td>Nadin Amizah</td>
+          <td>Chill Zone</td>
+        </tr>
+
+        <tr>
+          <td>21.00-22.30</td>
+          <td>Hindia</td>
+          <td>Main Stage</td>
+        </tr>
+
+
+        <!-- TANGGAL 16 -->
+        <tr>
+          <td rowspan="2">16 Juni</td>
+          <td>18.30-20.00</td>
+          <td>Bernadya</td>
+          <td>Side Stage</td>
+        </tr>
+
+        <tr>
+          <td>20.30-22.30</td>
+          <td>Pamungkas</td>
+          <td>Main Stage</td>
+        </tr>
+
+
+        <!-- TANGGAL 17 -->
+        <tr>
+          <td rowspan="2">17 Juni</td>
+          <td>18.00-19.30</td>
+          <td>Juicy Lucy</td>
+          <td>Side Stage</td>
+        </tr>
+
+        <tr>
+          <td>20.00-22.30</td>
+          <td>Feast</td>
+          <td>Main Stage</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+  </div>
+</section>
 
       <!-- BAGIAN 6 PEMBELIAN TICKETS -->
-      <section id="tickets" class="tickets-form">
-        <form action="">
-          <table>
-            <!-- INPUT NAMA LENGKAP -->
-            <tr>
-              <td>
-                <label for="nama_lengkap">Nama Lengkap : </label>
-              </td>
-              <td>
-                <input
-                  type="text"
-                  name="nama_lengkap"
-                  id="nama_lengkap"
-                  required
-                />
-              </td>
-            </tr>
-            <!-- INPUT EMAIL -->
-            <tr>
-              <td>
-                <label for="email">Email :</label>
-              </td>
-              <td>
-                <input type="email" name="email" id="email" required />
-              </td>
-            </tr>
-            <!-- INPUT NOMOR TELEPON -->
-            <tr>
-              <td>
-                <label for="no_telepon">Nomor Telepon : </label>
-              </td>
-              <td>
-                <input
-                  type="number"
-                  name="no_telepon"
-                  id="no_telepon"
-                  required
-                />
-              </td>
-            </tr>
-            <!-- RADIO TIPE TICKET -->
-            <tr>
-              <td rowspan="3">Tipe Tiket</td>
-              <!-- REGULER CLASS -->
-              <td>
-                <label>
-                  <input
-                    type="radio"
-                    name="tipe"
-                    id="Regular"
-                    value="Regular"
-                  />
-                  Regular Rp 500,000
-                </label>
-              </td>
-            </tr>
-            <!-- VIP CLASS -->
-            <tr>
-              <td>
-                <label>
-                  <input type="radio" name="tipe" id="Vip" value="Vip" />
-                  VIP Rp 1,500,000
-                </label>
-              </td>
-            </tr>
-            <!-- VVIP CLASS -->
-            <tr>
-              <td>
-                <label>
-                  <input type="radio" name="tipe" id="Vvip" value="Vvip" />
-                  VVIP Rp 3,000,000
-                </label>
-              </td>
-            </tr>
-            <!-- INPUT JUMLAH TIKET -->
-            <tr>
-              <td>
-                <label for="jumlah_tiket">Jumlah Tiket :</label>
-              </td>
-              <td>
-                <select name="jumlah_tiket" id="jumlah_tiket">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </td>
-            </tr>
-            <!-- INPUT DAY PASS -->
-            <tr>
-              <td>
-                <label for="day1">day 1</label>
-              </td>
-              <td>
-                <input type="checkbox" name="day1" id="day1" value="day1" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="day2">day 2</label>
-              </td>
-              <td>
-                <input type="checkbox" name="day2" id="day2" value="day2" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="day3">day 3</label>
-              </td>
-              <td>
-                <input type="checkbox" name="day3" id="day3" value="day3" />
-              </td>
-            </tr>
-          </table>
-        </form>
-      </section>
+<section id="tickets" class="tickets-form">
+
+  <h3>Get Your Ticket!</h3>
+
+  <form action="">
+
+    <!-- INPUT NAMA LENGKAP -->
+    <div class="form-group">
+      <label for="nama_lengkap">Nama Lengkap :</label>
+
+      <input
+        type="text"
+        name="nama_lengkap"
+        id="nama_lengkap"
+        required
+      />
+    </div>
+
+
+    <!-- INPUT EMAIL -->
+    <div class="form-group">
+      <label for="email">Email :</label>
+
+      <input
+        type="email"
+        name="email"
+        id="email"
+        required
+      />
+    </div>
+
+
+    <!-- RADIO TIPE TIKET -->
+    <div class="form-group">
+      <p>Tipe Tiket :</p>
+
+      <div class="ticket-option">
+        <label for="regular">
+          <input
+            type="radio"
+            name="tipe"
+            id="regular"
+            value="Regular"
+            required
+          />
+          Regular Rp 500,000
+        </label>
+      </div>
+
+      <div class="ticket-option">
+        <label for="vip">
+          <input
+            type="radio"
+            name="tipe"
+            id="vip"
+            value="VIP"
+          />
+          VIP Rp 1,500,000
+        </label>
+      </div>
+
+      <div class="ticket-option">
+        <label for="vvip">
+          <input
+            type="radio"
+            name="tipe"
+            id="vvip"
+            value="VVIP"
+          />
+          VVIP Rp 3,000,000
+        </label>
+      </div>
+    </div>
+
+
+    <!-- INPUT JUMLAH TIKET -->
+    <div class="form-group">
+      <label for="jumlah_tiket">Jumlah Tiket :</label>
+
+      <select
+        name="jumlah_tiket"
+        id="jumlah_tiket"
+      >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <button type="submit">Get Ticket</button>
+    </div>
+
+  </form>
+
+</section>
       <!-- BAGIAN 7 GALLERY -->
-      <section id="gallery">
-        <figure>
-          <img src="image 1" alt="" />
-          <img src="image 2" alt="" />
-          <img src="image 3" alt="" />
-          <img src="image 4" alt="" />
-          <img src="image 5" alt="" />
-          <img src="image 6" alt="" />
-          <figcaption>
-            Galeri StreamFest 2025: dari panggung neon, zona foto, hingga
-            penutupan malam yang masih terasa sampai sekarang.
-          </figcaption>
+      <section id="gallery" class="gallery-section">
+        <h3>Event Gallery</h3>
+        <figure class="image-grid">
+          <img src="assets/images/hindia.jpg"" alt="consert_gallery" />
+          <img src="assets/images/hindia.jpg"" alt="consert_gallery" />
+          <img src="assets/images/hindia.jpg"" alt="consert_gallery" />
+          <img src="assets/images/hindia.jpg"" alt="consert_gallery" />
+          <img src="assets/images/hindia.jpg"" alt="consert_gallery" />
+          <img src="assets/images/hindia.jpg"" alt="consert_gallery" />
         </figure>
       </section>
     </main>
@@ -338,5 +340,7 @@
         <a href="mailto:hello@wpustreamfest.com.">hello@wpustreamfest.com.</a>
       </p>
     </footer>
+
+    <a href="#tickets" class="floating-ticket-button">🎫 Buy Ticket </a>
   </body>
 </html>
