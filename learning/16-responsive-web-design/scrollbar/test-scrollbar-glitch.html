@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Scrollbar Glitch & Layout Shift</title>
+    <style>
+      /* ==========================================================================
+       1. CSS RESET & VARIABLES
+       ========================================================================== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg-base: #f8fafc;
+        --panel-bg: #ffffff;
+        --text-dark: #0f172a;
+        --text-muted: #64748b;
+        --accent: #059669;
+        --accent-hover: #047857;
+        --border: #cbd5e1;
+      }
+
+      /* ==========================================================================
+       2. SCROLLBAR GUTTER MODES
+       ========================================================================== */
+      html.fix-stable {
+        scrollbar-gutter: stable; /* Memesan ruang di sisi kanan saja */
+      }
+
+      html.fix-both {
+        scrollbar-gutter: stable both-edges; /* Memesan ruang simetris di kiri & kanan */
+      }
+
+      /* ==========================================================================
+       3. GLOBAL STYLES
+       ========================================================================== */
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background-color: var(--bg-base);
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      /* Navbar Contained / Card Header
+       Menggunakan desain Card Header yang selaras dengan main-container (max-width: 800px)
+       sehingga terhindar dari potongan border-bottom pada gutter browser */
+      .navbar {
+        background-color: var(--panel-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        width: 90%;
+        max-width: 800px;
+        margin: 20px auto 0 auto;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 15px;
+        z-index: 100;
+      }
+
+      .nav-container {
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-container h1 {
+        font-size: 1.3rem;
+        color: var(--text-dark);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      /* Area Konten Utama */
+      .main-container {
+        width: 90%;
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: var(--panel-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+
+      .main-container h2 {
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+      }
+
+      .main-container p.desc {
+        color: var(--text-muted);
+        margin-bottom: 30px;
+      }
+
+      /* Panel Kontrol Demo */
+      .control-panel {
+        background-color: #f1f5f9;
+        border: 1px dashed var(--border);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .control-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .status-wrapper {
+        font-size: 0.95rem;
+      }
+
+      .btn {
+        padding: 10px 18px;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+      }
+
+      .btn-primary {
+        background-color: var(--accent);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--accent-hover);
+      }
+
+      .btn-secondary {
+        background-color: #64748b;
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background-color: #475569;
+      }
+
+      .btn-secondary.active {
+        background-color: #2563eb;
+        box-shadow: 0 0 0 2px #93c5fd;
+      }
+
+      /* Konten Ekstra Dinamis */
+      .extra-paragraphs {
+        display: none;
+        margin-top: 30px;
+        border-top: 2px dashed var(--border);
+        padding-top: 20px;
+      }
+
+      .extra-paragraphs.show {
+        display: block;
+      }
+
+      .extra-paragraphs p {
+        margin-bottom: 15px;
+        color: #334155;
+      }
+
+      /* Indikator Status */
+      .status-indicator {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-left: 10px;
+      }
+
+      .status-on {
+        background-color: #d1fae5;
+        color: #065f46;
+      }
+
+      .status-off {
+        background-color: #fee2e2;
+        color: #991b1b;
+      }
+
+      /* Live Code Snippet Display & Syntax Highlighting */
+      .code-preview {
+        width: 100%;
+        background-color: #0f172a;
+        color: #cbd5e1;
+        padding: 14px 18px;
+        border-radius: 8px;
+        font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        border-left: 4px solid var(--accent);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .code-preview pre {
+        margin: 0;
+        white-space: pre-wrap;
+      }
+
+      .hl-selector {
+        color: #f43f5e;
+        font-weight: bold;
+      }
+
+      .hl-property {
+        color: #38bdf8;
+      }
+
+      .hl-value {
+        color: #f59e0b;
+      }
+
+      .hl-comment {
+        color: #64748b;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <h1>WPU TechBlog</h1>
+        <ul class="nav-links">
+          <li><a href="#">Beranda</a></li>
+          <li><a href="#">Artikel</a></li>
+          <li><a href="#">Kontak</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <div class="main-container">
+      <h2>Simulasi Masalah Scrollbar Layout Shift</h2>
+      <p class="desc">
+        Gunakan panel kontrol di bawah ini untuk melihat bagaimana kemunculan
+        scrollbar vertikal menggeser letak navbar dan tulisan ini, serta
+        bagaimana kita menstabilkannya.
+      </p>
+
+      <!-- Kontrol Panel -->
+      <div class="control-panel">
+        <div class="control-buttons">
+          <button class="btn btn-primary" onclick="toggleContent()">
+            1. Toggle Konten Panjang
+          </button>
+          <button
+            id="btnStable"
+            class="btn btn-secondary"
+            onclick="setFix('stable')"
+          >
+            2. Mode 'stable'
+          </button>
+          <button
+            id="btnBoth"
+            class="btn btn-secondary"
+            onclick="setFix('both-edges')"
+          >
+            3. Mode 'stable both-edges'
+          </button>
+        </div>
+
+        <div class="status-wrapper">
+          <span>Status Perbaikan:</span>
+          <span id="fixStatus" class="status-indicator status-off"
+            >TIDAK AKTIF</span
+          >
+        </div>
+
+        <!-- Snippet Code Display Live -->
+        <div class="code-preview">
+          <pre><code id="codeSnippet"><span class="hl-comment">/* CSS Default Browser: */</span>
+<span class="hl-selector">html</span> {
+  <span class="hl-property">scrollbar-gutter</span>: <span class="hl-value">auto</span>; <span class="hl-comment">/* Ruang scrollbar TIDAK dipesan */</span>
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Konten Pendek Awal -->
+      <div class="intro-content">
+        <p>
+          Ini adalah konten dasar halaman web. Halaman ini sangat pendek
+          sehingga belum memiliki scrollbar vertikal di sebelah kanan. Silakan
+          klik tombol <strong>"Toggle Konten Panjang"</strong> di atas.
+          Perhatikan baik-baik teks navbar di bagian atas layar dan tepi kotak
+          putih ini saat halaman memanjang dan memendek secara berulang.
+        </p>
+      </div>
+
+      <!-- Blok Konten Panjang Dinamis -->
+      <div id="extraContent" class="extra-paragraphs">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique
+          commodi voluptatibus aut recusandae placeat ex a temporibus,
+          laudantium, provident unde optio rem distinctio, inventore natus
+          impedit architecto repellendus obcaecati in!
+        </p>
+        <p>
+          Dolor sit amet, consectetur adipisicing elit. Non corrupti distinctio,
+          doloremque harum eaque inventore incidunt natus cum mollitia alias,
+          minima, expedita perferendis commodi eveniet! Doloremque illum at
+          sequi perferendis.
+        </p>
+        <p>
+          Consectetur adipisicing elit. Repudiandae unde, magnam soluta
+          architecto at a sequi eveniet possimus recusandae mollitia sit ab
+          dolorem alias distinctio accusamus perferendis quasi reiciendis iusto!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique
+          commodi voluptatibus aut recusandae placeat ex a temporibus,
+          laudantium, provident unde optio rem distinctio, inventore natus
+          impedit architecto repellendus obcaecati in!
+        </p>
+        <p>
+          Dolor sit amet, consectetur adipisicing elit. Non corrupti distinctio,
+          doloremque harum eaque inventore incidunt natus cum mollitia alias,
+          minima, expedita perferendis commodi eveniet! Doloremque illum at
+          sequi perferendis.
+        </p>
+        <p>
+          Consectetur adipisicing elit. Repudiandae unde, magnam soluta
+          architecto at a sequi eveniet possimus recusandae mollitia sit ab
+          dolorem alias distinctio accusamus perferendis quasi reiciendis iusto!
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk memanjangkan/memendekkan konten halaman
+      function toggleContent() {
+        const extraContent = document.getElementById("extraContent");
+        extraContent.classList.toggle("show");
+      }
+
+      // Fungsi untuk mengatur mode CSS scrollbar-gutter
+      function setFix(mode) {
+        const htmlEl = document.documentElement;
+        const statusIndicator = document.getElementById("fixStatus");
+        const codeSnippet = document.getElementById("codeSnippet");
+        const btnStable = document.getElementById("btnStable");
+        const btnBoth = document.getElementById("btnBoth");
+
+        if (mode === "stable" && htmlEl.classList.contains("fix-stable")) {
+          mode = "off";
+        } else if (
+          mode === "both-edges" &&
+          htmlEl.classList.contains("fix-both")
+        ) {
+          mode = "off";
+        }
+
+        htmlEl.classList.remove("fix-stable", "fix-both");
+        btnStable.classList.remove("active");
+        btnBoth.classList.remove("active");
+
+        if (mode === "stable") {
+          htmlEl.classList.add("fix-stable");
+          btnStable.classList.add("active");
+          statusIndicator.innerText = "AKTIF (STABLE)";
+          statusIndicator.className = "status-indicator status-on";
+          codeSnippet.innerHTML = `<span class="hl-comment">/* CSS Perbaikan: stable */</span>\n<span class="hl-selector">html</span> {\n  <span class="hl-property">scrollbar-gutter</span>: <span class="hl-value">stable</span>; <span class="hl-comment">/* Memesan ruang scrollbar di kanan */</span>\n}`;
+        } else if (mode === "both-edges") {
+          htmlEl.classList.add("fix-both");
+          btnBoth.classList.add("active");
+          statusIndicator.innerText = "AKTIF (STABLE BOTH-EDGES)";
+          statusIndicator.className = "status-indicator status-on";
+          codeSnippet.innerHTML = `<span class="hl-comment">/* CSS Perbaikan: stable both-edges */</span>\n<span class="hl-selector">html</span> {\n  <span class="hl-property">scrollbar-gutter</span>: <span class="hl-value">stable both-edges</span>; <span class="hl-comment">/* Memesan ruang di KIRI & KANAN */</span>\n}`;
+        } else {
+          statusIndicator.innerText = "TIDAK AKTIF";
+          statusIndicator.className = "status-indicator status-off";
+          codeSnippet.innerHTML = `<span class="hl-comment">/* CSS Default Browser: */</span>\n<span class="hl-selector">html</span> {\n  <span class="hl-property">scrollbar-gutter</span>: <span class="hl-value">auto</span>; <span class="hl-comment">/* Ruang scrollbar TIDAK dipesan */</span>\n}`;
+        }
+      }
+    </script>
+  </body>
+</html>

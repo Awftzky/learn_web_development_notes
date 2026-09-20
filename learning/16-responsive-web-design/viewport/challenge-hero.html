@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan 5d: Tantangan RWD - Sebelum Perbaikan</title>
+    <style>
+      /* ==========================================
+       1. CSS RESET & GENERAL STYLES (JANGAN DIUBAH)
+       ========================================== */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+        overflow-x: hidden;
+      }
+
+      /* Fixed Height Navbar */
+      .navbar {
+        height: 70px;
+        background-color: #1e293b;
+        border-bottom: 1px solid #334155;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+      }
+
+      .navbar-brand {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #3b82f6;
+      }
+
+      .navbar-menu {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+      }
+
+      .navbar-menu a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+
+      .navbar-menu a:hover {
+        color: #f8fafc;
+      }
+
+      /* Outer Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* ==========================================
+       2. BAGIAN TANTANGAN (CSS HERO SECTION)
+       Silakan isi instruksi di bawah ini!
+       ========================================== */
+
+      .hero-section {
+        display: flex;
+        align-items: center;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(59, 130, 246, 0.1),
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at bottom left,
+            rgba(168, 85, 247, 0.1),
+            transparent 50%
+          );
+        min-height: calc(100vh - 70px);
+
+        /* padding: calc(40px + 3vmax) 20px; */
+      }
+
+      .hero-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+        width: 100%;
+      }
+
+      @media (min-width: 768px) {
+        .hero-grid {
+          flex-direction: row;
+          justify-content: space-between;
+          text-align: left;
+        }
+      }
+
+      /* Kolom Teks (Kiri) */
+      .hero-text {
+        flex: 1;
+        text-align: center;
+      }
+
+      @media (min-width: 768px) {
+        .hero-text {
+          text-align: left;
+        }
+      }
+
+      .hero-text h1 {
+        color: #ffffff;
+        line-height: 1.15;
+        margin-bottom: 20px;
+        font-weight: 800;
+
+        /* CHALLENGE 2: Judul Dinamis dengan Batas Aman
+         Tugas: Atur font-size agar responsif terhadap lebar layar (vw),
+                tapi tidak boleh lebih kecil dari 2rem */
+        /* font-size: TODO_2; */
+        font-size: calc(2rem + 2vw);
+      }
+
+      .hero-text p {
+        color: #94a3b8;
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        max-width: 500px;
+      }
+
+      .btn-cta {
+        display: inline-block;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        color: #ffffff;
+        padding: 12px 28px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .btn-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+      }
+
+      /* Kolom Visual (Kanan) */
+      .hero-visual {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* CHALLENGE 3: Wadah Ilustrasi Persegi Multi-Orientasi
+       Tugas: Atur lebar (width) dan tinggi (height) elemen agar membentuk persegi sempurna.
+              Ukurannya harus membesar dinamis sesuai dimensi layar terkecil (vmin) agar tidak meluber
+              saat layar pendek/landscape, dengan batas aman minimum 120px. */
+      .illustration-box {
+        background: linear-gradient(135deg, #3b82f6, #ec4899);
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 1.1rem;
+        box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+
+        /* width: 150px; Ini ukuran default sementara */
+        /* height: 150px; Ini ukuran default sementara */
+        /* width: TODO_3;  */
+        /* height: TODO_3; */
+        width: calc(120px + 10vmin);
+        height: calc(120px + 10vmin);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar Statis -->
+    <nav class="navbar">
+      <div class="navbar-brand">WPU Creative</div>
+      <ul class="navbar-menu">
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Layanan</a></li>
+        <li><a href="#">Portofolio</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Kolom Kiri: Teks CTA -->
+          <div class="hero-text">
+            <h1>Solusi Kreatif Tanpa Batas</h1>
+            <p>
+              Membantu bisnis Anda tumbuh lebih cepat melalui desain premium,
+              pengembangan produk modern, dan strategi pemasaran digital
+              terarah.
+            </p>
+            <a href="#" class="btn-cta">Mulai Proyek</a>
+          </div>
+
+          <!-- Kolom Kanan: Visual Box -->
+          <div class="hero-visual">
+            <div class="illustration-box">Ilustrasi Persegi</div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>

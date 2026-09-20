@@ -1,0 +1,1 @@
+document.writeline( 100. );

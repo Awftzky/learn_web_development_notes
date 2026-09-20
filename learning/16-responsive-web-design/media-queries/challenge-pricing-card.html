@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latihan 7b: Tantangan RWD - Sebelum Perbaikan</title>
+    <style>
+      /* ==========================================
+       1. CSS RESET & GENERAL STYLES (JANGAN DIUBAH)
+       ========================================== */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+        line-height: 1.6;
+        padding: 40px 0;
+        min-height: 100vh;
+      }
+
+      .header-section {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .badge-category {
+        display: inline-block;
+        background-color: rgba(59, 130, 246, 0.2);
+        color: #38bdf8;
+        border: 1px solid rgba(56, 189, 248, 0.4);
+        padding: 4px 14px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+
+      .pricing-text {
+        color: #94a3b8;
+        font-size: 1rem;
+      }
+
+      /* Style Komponen Kartu */
+      .card {
+        background-color: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 16px;
+        padding: 30px 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .card:hover {
+        border-color: #38bdf8;
+        transform: translateY(-4px);
+      }
+
+      .card.featured {
+        background-color: #1e293b;
+        border: 2px solid #3b82f6;
+        position: relative;
+      }
+
+      .card.featured::before {
+        content: "PALING POPULER";
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #3b82f6;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 800;
+        padding: 2px 10px;
+        border-radius: 20px;
+      }
+
+      .plan-name {
+        font-size: 1.25rem;
+        color: #f8fafc;
+        margin-bottom: 10px;
+      }
+
+      .plan-price {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #38bdf8;
+        margin-bottom: 15px;
+      }
+
+      .plan-price span {
+        font-size: 0.9rem;
+        color: #64748b;
+        font-weight: normal;
+      }
+
+      .plan-features {
+        list-style: none;
+        margin-bottom: 25px;
+      }
+
+      .plan-features li {
+        color: #cbd5e1;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .plan-btn {
+        background-color: #334155;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .card.featured .plan-btn {
+        background-color: #3b82f6;
+      }
+
+      .plan-btn:hover {
+        background-color: #2563eb;
+      }
+
+      /* ==========================================
+       2. BAGIAN TANTANGAN (RWD & MEDIA QUERIES)
+       Silakan selesaikan 5 TODO di bawah ini!
+       ========================================== */
+
+      /* RESPONSIVE CONTAINER DESIGN  */
+      .container {
+        width: min(92%, 1100px);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .pricing-title {
+        color: #ffffff;
+
+        font-size: 2clamp (1.6rem, 4vw, 2.6rem);
+
+        line-height: 1.2;
+        margin-bottom: 10px;
+      }
+
+      .card-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      /* Mobile First */
+      @media (min-width: 48em) {
+        .card-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Dekstop First */
+      @media (min-width: 64em) {
+        .card-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header-section">
+        <span class="badge-category">PAKET LANGGANAN</span>
+        <h1 class="pricing-title">Pilih Paket Belajar Sesuai Kebutuhanmu</h1>
+        <p class="pricing-text">
+          Tingkatkan skill web development kamu dari dasar hingga mahir bersama
+          komunitas WPU.
+        </p>
+      </header>
+
+      <main class="card-grid">
+        <!-- Kartu 1: Pemula -->
+        <div class="card">
+          <div>
+            <h2 class="plan-name">Pemula</h2>
+            <div class="plan-price">Rp 0 <span>/ selamanya</span></div>
+            <ul class="plan-features">
+              <li>✓ Akses Seluruh Video Dasar HTML &amp; CSS</li>
+              <li>✓ Akses Modul &amp; Dokumen Latihan</li>
+              <li>✓ Forum Diskusi Komunitas</li>
+            </ul>
+          </div>
+          <button class="plan-btn">Mulai Gratis</button>
+        </div>
+
+        <!-- Kartu 2: Pro (Featured) -->
+        <div class="card featured">
+          <div>
+            <h2 class="plan-name">Pro Developer</h2>
+            <div class="plan-price">Rp 99K <span>/ bulan</span></div>
+            <ul class="plan-features">
+              <li>✓ Semua Fitur Paket Pemula</li>
+              <li>✓ Video Advanced JavaScript &amp; React</li>
+              <li>✓ Code Review dari Mentor</li>
+              <li>✓ Sertifikat Kelulusan Modul</li>
+            </ul>
+          </div>
+          <button class="plan-btn">Pilih Paket Pro</button>
+        </div>
+
+        <!-- Kartu 3: Ultimate -->
+        <div class="card">
+          <div>
+            <h2 class="plan-name">Ultimate Career</h2>
+            <div class="plan-price">Rp 199K <span>/ bulan</span></div>
+            <ul class="plan-features">
+              <li>✓ Semua Fitur Paket Pro</li>
+              <li>✓ Bimbingan 1-on-1 Portofolio Kerja</li>
+              <li>✓ Penyaluran Kerja ke Partner Tech</li>
+              <li>✓ Akses Workshop Eksklusif</li>
+            </ul>
+          </div>
+          <button class="plan-btn">Gabung Ultimate</button>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
