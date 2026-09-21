@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Global Tokenization & Component Isolation</title>
+
+  <!-- Prism.js CSS Theme for Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. GLOBAL DESIGN TOKENS (:root)
+       Memusatkan seluruh token desain global (Warna, Spasi, Radius)
+       ========================================================================== */
+    :root {
+      /* Palette Warna Global (Global Color Tokens) */
+      --color-primary: #3b82f6;
+      --color-primary-dark: #1d4ed8;
+      
+      --color-danger: #ef4444;
+      --color-danger-dark: #b91c1c;
+
+      --color-success: #10b981;
+      --color-success-dark: #047857;
+
+      --color-neutral-100: #f8fafc;
+      --color-neutral-200: #e2e8f0;
+      --color-neutral-700: #334155;
+      --color-neutral-900: #0f172a;
+      --color-white: #ffffff;
+
+      /* Scale Spasi Global (Global Spacing Tokens) */
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+
+      /* Scale Border Radius Global (Global Radius Tokens) */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--color-neutral-100);
+      color: var(--color-neutral-900);
+      padding: var(--space-xl);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .card {
+      background: var(--color-white);
+      border: 1px solid var(--color-neutral-200);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      color: var(--color-neutral-700);
+      margin-bottom: var(--space-md);
+      border-bottom: 2px solid var(--color-neutral-200);
+      padding-bottom: var(--space-xs);
+    }
+
+    p {
+      color: var(--color-neutral-700);
+      font-size: 0.95rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: center;
+    }
+
+    /* Section Label Badges */
+    .section-label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .badge-blue {
+      background-color: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    .badge-green {
+      background-color: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    /* Prism.js Custom Container Override */
+    pre[class*="language-"] {
+      border-radius: var(--radius-md);
+      margin-bottom: 24px !important;
+      font-size: 0.9rem;
+    }
+
+    /* ==========================================================================
+       2. COMPONENT ISOLATION (SEMANTIC ABSTRACTION) - TOMBOL (.btn)
+       ========================================================================== */
+    .btn {
+      /* --- Custom Properties Lokal Komponen (Isolated Scope) --- */
+      --btn-bg: var(--color-primary);
+      --btn-bg-hover: var(--color-primary-dark);
+      --btn-color: var(--color-white);
+      --btn-border: var(--color-primary);
+      --btn-padding: var(--space-sm) var(--space-md);
+      --btn-radius: var(--radius-md);
+      --btn-font-size: 0.95rem;
+
+      /* --- Aplikasi Properti CSS (Ditulis HANYA SATU KALI!) --- */
+      font-family: inherit;
+      font-size: var(--btn-font-size);
+      font-weight: 600;
+      color: var(--btn-color);
+      background-color: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      padding: var(--btn-padding);
+      border-radius: var(--btn-radius);
+      
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* State Hover */
+    .btn:hover {
+      --btn-bg: var(--btn-bg-hover);
+      --btn-border: var(--btn-bg-hover);
+    }
+
+    /* Variasi Warna (.btn-danger, .btn-success, .btn-outline) */
+    .btn-danger {
+      --btn-bg: var(--color-danger);
+      --btn-bg-hover: var(--color-danger-dark);
+      --btn-border: var(--color-danger);
+    }
+
+    .btn-success {
+      --btn-bg: var(--color-success);
+      --btn-bg-hover: var(--color-success-dark);
+      --btn-border: var(--color-success);
+    }
+
+    .btn-outline {
+      --btn-bg: transparent;
+      --btn-bg-hover: var(--color-primary);
+      --btn-color: var(--color-primary);
+      --btn-border: var(--color-primary);
+    }
+    .btn-outline:hover {
+      --btn-color: var(--color-white);
+    }
+
+    /* Variasi Ukuran (.btn-lg, .btn-pill) */
+    .btn-lg {
+      --btn-padding: var(--space-md) var(--space-lg);
+      --btn-font-size: 1.1rem;
+      --btn-radius: var(--radius-lg);
+    }
+
+    .btn-pill {
+      --btn-radius: var(--radius-full);
+    }
+
+    /* State Disabled */
+    .btn:disabled, .btn.disabled {
+      --btn-bg: var(--color-neutral-200);
+      --btn-color: #94a3b8;
+      --btn-border: var(--color-neutral-200);
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div>
+      <h1>Demo: Global Tokenization vs Component Isolation</h1>
+      <p>Membandingkan pemetaan variabel global <code>:root</code> ke variabel lokal semantik komponen <code>.btn</code>.</p>
+    </div>
+
+    <!-- Section 1: Struktur Kode CSS -->
+    <div class="card">
+      <h2>1. Struktur Kode CSS</h2>
+      <p>Berikut adalah pembagian jelas antara <strong>Global Tokens</strong> di <code>:root</code> dan <strong>Component Isolation</strong> pada <code>.btn</code>:</p>
+
+      <!-- Part A: Global Tokens -->
+      <div class="section-label">
+        <span class="badge badge-blue">🔵 Global Tokens (:root)</span>
+        <span style="font-size: 0.85rem; color: #475569;">Didefinisikan sekali di <code>:root</code> untuk warna dasar, skala spasi, dan border-radius universal seluruh aplikasi.</span>
+      </div>
+      <pre><code class="language-css">/* ==========================================================================
+   GLOBAL DESIGN TOKENS (:root)
+   Token terpusat untuk warna dasar, skala spasi, dan border-radius.
+   ========================================================================== */
+:root {
+  /* Palette Warna Global (Global Color Tokens) */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  --color-danger: #ef4444;
+  --color-danger-dark: #b91c1c;
+  --color-success: #10b981;
+  --color-success-dark: #047857;
+  --color-white: #ffffff;
+
+  /* Skala Spasi Global (Global Spacing Tokens) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+
+  /* Skala Border Radius Global (Global Radius Tokens) */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+}</code></pre>
+
+      <!-- Part B: Component Isolation -->
+      <div class="section-label" style="margin-top: 20px;">
+        <span class="badge badge-green">🟢 Component Isolation (.btn)</span>
+        <span style="font-size: 0.85rem; color: #475569;">Variabel lokal semantik yang mengisolasi komponen. Properti CSS (seperti <code>background-color</code>) ditulis <strong>HANYA SATU KALI</strong>!</span>
+      </div>
+      <pre><code class="language-css">/* ==========================================================================
+   COMPONENT ISOLATION (SEMANTIC ABSTRACTION) - TOMBOL (.btn)
+   ========================================================================== */
+
+/* 1. Kelas Utama: Properti CSS ditulis HANYA 1 KALI */
+.btn {
+  /* Variabel lokal semantik yang dipetakan dari global token */
+  --btn-bg: var(--color-primary);
+  --btn-bg-hover: var(--color-primary-dark);
+  --btn-color: var(--color-white);
+  --btn-border: var(--color-primary);
+  --btn-padding: var(--space-sm) var(--space-md);
+  --btn-radius: var(--radius-md);
+
+  /* Aplikasi Properti CSS (Ditulis HANYA SATU KALI!) */
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: var(--btn-color);
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+}
+
+/* 2. State Hover: Cukup ganti nilai variabelnya! */
+.btn:hover {
+  --btn-bg: var(--btn-bg-hover);
+  --btn-border: var(--btn-bg-hover);
+}
+
+/* 3. Variasi Warna: Cukup ganti nilai variabelnya tanpa rewrite properti! */
+.btn-danger {
+  --btn-bg: var(--color-danger);
+  --btn-bg-hover: var(--color-danger-dark);
+  --btn-border: var(--color-danger);
+}
+
+.btn-success {
+  --btn-bg: var(--color-success);
+  --btn-bg-hover: var(--color-success-dark);
+  --btn-border: var(--color-success);
+}
+
+.btn-outline {
+  --btn-bg: transparent;
+  --btn-bg-hover: var(--color-primary);
+  --btn-color: var(--color-primary);
+  --btn-border: var(--color-primary);
+}
+.btn-outline:hover {
+  --btn-color: var(--color-white);
+}
+
+/* 4. Modifier Ukuran: Cukup ganti variabel spasi & radius! */
+.btn-lg {
+  --btn-padding: var(--space-md) var(--space-lg);
+  --btn-radius: var(--radius-lg);
+}</code></pre>
+    </div>
+
+    <!-- Section 2: Hasil Visual Variasi Tombol -->
+    <div class="card">
+      <h2>2. Hasil Visual Variasi Tombol (.btn)</h2>
+      <p>Semua tombol di bawah menggunakan kelas utama <code>.btn</code>. Perhatikan bahwa properti CSS seperti <code>background-color</code>, <code>border</code>, dan <code>padding</code> <strong>tidak ditulis ulang</strong> pada variasi warna maupun ukuran!</p>
+      
+      <div class="button-group">
+        <button class="btn">Primary (.btn)</button>
+        <button class="btn btn-danger">Danger (.btn-danger)</button>
+        <button class="btn btn-success">Success (.btn-success)</button>
+        <button class="btn btn-outline">Outline (.btn-outline)</button>
+        <button class="btn btn-lg">Large (.btn-lg)</button>
+        <button class="btn btn-pill">Pill (.btn-pill)</button>
+        <button class="btn" disabled>Disabled</button>
+      </div>
+
+      <!-- HTML Code Snippet -->
+      <div style="margin-top: 24px;">
+        <span style="font-size: 0.85rem; font-weight: 700; color: #475569; display: block; margin-bottom: 6px;">HTML Structure Snippet:</span>
+        <pre><code class="language-html">&lt;!-- HTML Elemen Tombol --&gt;
+&lt;button class="btn"&gt;Primary (.btn)&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Danger (.btn-danger)&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Success (.btn-success)&lt;/button&gt;
+&lt;button class="btn btn-outline"&gt;Outline (.btn-outline)&lt;/button&gt;
+&lt;button class="btn btn-lg"&gt;Large (.btn-lg)&lt;/button&gt;
+&lt;button class="btn btn-pill"&gt;Pill (.btn-pill)&lt;/button&gt;
+&lt;button class="btn" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Prism.js Scripts for Syntax Highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+</body>
+</html>
