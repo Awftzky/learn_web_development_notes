@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Variable Fragments & Media Query Override</title>
+
+  <!-- Prism.js CSS Theme untuk Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLE FRAGMENTS & MEDIA QUERY OVERRIDES
+       ========================================================================== */
+    :root {
+      /* Base Theme Colors */
+      --bg-main: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-sub: #475569;
+      --border-color: #e2e8f0;
+    }
+
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      padding: 32px 24px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    h1 { font-size: 1.75rem; margin-bottom: 8px; }
+    h2 { font-size: 1.25rem; color: var(--text-main); margin-bottom: 16px; border-bottom: 2px solid var(--border-color); padding-bottom: 8px; }
+    p { color: var(--text-sub); font-size: 0.95rem; margin-bottom: 16px; }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      width: fit-content;
+      margin-bottom: 8px;
+    }
+    .badge-blue { background-color: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+    .badge-emerald { background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+    .badge-rose { background-color: #ffe4e6; color: #9f1239; border: 1px solid #fecdd3; }
+
+    /* Demo Cards Container */
+    .fragment-demo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    /* --------------------------------------------------------------------------
+       EXAMPLE 1: HSL COLOR FRAGMENTS (Mobile-First)
+       -------------------------------------------------------------------------- */
+    .hsl-card {
+      /* Fragmen HSL (Hue, Saturation, Lightness) */
+      --hue: 210;       /* Fragmen Hue (Default Mobile: Biru) */
+      --sat: 85%;
+      --light: 50%;
+      
+      /* Menggabungkan Fragmen ke Properti Utama */
+      --brand-color: hsl(var(--hue), var(--sat), var(--light));
+      --brand-soft: hsl(var(--hue), var(--sat), 95%);
+      --brand-border: hsl(var(--hue), var(--sat), 80%);
+
+      background-color: var(--brand-soft);
+      border: 2px solid var(--brand-border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.4s ease;
+    }
+
+    .hsl-card h3 {
+      color: hsl(var(--hue), 90%, 25%);
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .hsl-badge {
+      background-color: var(--brand-color);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    /* --------------------------------------------------------------------------
+       EXAMPLE 2: GRADIENT FRAGMENTS (Mobile-First)
+       -------------------------------------------------------------------------- */
+    .gradient-hero {
+      /* Fragmen Linear Gradient */
+      --grad-angle: 135deg;
+      --grad-hue-1: 220;
+      --grad-hue-2: 260;
+
+      background: linear-gradient(
+        var(--grad-angle),
+        hsl(var(--grad-hue-1), 85%, 55%),
+        hsl(var(--grad-hue-2), 85%, 55%)
+      );
+      color: #ffffff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+    }
+
+    .gradient-hero h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .gradient-hero p { color: rgba(255,255,255,0.9); margin-bottom: 0; }
+
+    /* --------------------------------------------------------------------------
+       MEDIA QUERY OVERRIDES (NO RE-WRITING SELECTORS!)
+       Hanya menimpa fragmen nilai variabelnya di breakpoint layar sedang/lebar
+       -------------------------------------------------------------------------- */
+    @media (min-width: 48em) { /* 768px Tablet/Desktop */
+      .hsl-card {
+        /* Cukup timpa fragmen --hue saja! Biru (210) -> Hijau Emerald (160) */
+        --hue: 160;
+      }
+
+      .gradient-hero {
+        /* Timpa fragmen sudut & warna gradien */
+        --grad-angle: 90deg;
+        --grad-hue-1: 340; /* Pink Magenta */
+        --grad-hue-2: 30;  /* Oranye Warm */
+      }
+    }
+
+    pre[class*="language-"] {
+      border-radius: 8px;
+      margin-bottom: 20px !important;
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div>
+      <h1>Demo: Variable Fragments & Media Query Override</h1>
+      <p>Memecah properti kompleks menjadi fragmen variabel modular, lalu menimpa fragmen tersebut di Media Query tanpa menulis ulang selektor CSS.</p>
+    </div>
+
+    <!-- Section 1: Struktur Kode CSS -->
+    <div class="card">
+      <h2>1. Struktur Kode CSS</h2>
+      <p>Berikut adalah contoh penggunaan <strong>Variable Fragments</strong> dan cara melakukan <strong>Media Query Override</strong> secara bersih & DRY:</p>
+
+      <!-- Snippet Fragmen HSL -->
+      <div style="margin-bottom: 8px;">
+        <span class="badge badge-blue">1. HSL Color Fragments (--hue, --sat, --light)</span>
+      </div>
+      <pre><code class="language-css">/* Deklarasi Komponen dengan Fragmen HSL (Mobile-First) */
+.hsl-card {
+  --hue: 210; /* Fragmen Hue (Default: Biru 210) */
+  --sat: 85%;
+  --light: 50%;
+
+  /* Menggabungkan fragmen ke fungsi hsl() */
+  background-color: hsl(var(--hue), var(--sat), 95%);
+  border: 2px solid hsl(var(--hue), var(--sat), 80%);
+}
+
+/* Media Query Override: CUKUP TIMPA FRAGMEN --hue SAJA! */
+@media (min-width: 48em) {
+  .hsl-card {
+    --hue: 160; /* Berubah otomatis jadi Hijau Emerald 160 tanpa re-write properti! */
+  }
+}</code></pre>
+
+      <!-- Snippet Fragmen Gradien -->
+      <div style="margin-bottom: 8px; margin-top: 20px;">
+        <span class="badge badge-rose">2. Linear Gradient Fragments (--grad-angle, --grad-hue)</span>
+      </div>
+      <pre><code class="language-css">/* Deklarasi Komponen Hero Gradien */
+.gradient-hero {
+  --grad-angle: 135deg;
+  --grad-hue-1: 220; /* Fragmen Warna 1 */
+  --grad-hue-2: 260; /* Fragmen Warna 2 */
+
+  background: linear-gradient(
+    var(--grad-angle),
+    hsl(var(--grad-hue-1), 85%, 55%),
+    hsl(var(--grad-hue-2), 85%, 55%)
+  );
+}
+
+/* Media Query Override: CUKUP TIMPA FRAGMEN ANGEL & HUE */
+@media (min-width: 48em) {
+  .gradient-hero {
+    --grad-angle: 90deg;
+    --grad-hue-1: 340; /* Pink */
+    --grad-hue-2: 30;  /* Oranye */
+  }
+}</code></pre>
+    </div>
+
+    <!-- Section 2: Hasil Visual Demo -->
+    <div class="card">
+      <h2>2. Hasil Visual Demo (Responsive Live)</h2>
+      <p>Cobalah ubah ukuran layar browser Anda (atau gunakan emulasi layar tablet <code>768px</code> ke atas). Perhatikan bagaimana warna HSL dan Gradien berubah serempak hanya dengan pergantian fragmen variabel!</p>
+
+      <div class="fragment-demo-grid">
+        <!-- Demo Box 1: HSL Fragments -->
+        <div class="hsl-card">
+          <h3>🎨 1. HSL Color Fragment Demo</h3>
+          <p>Warna latar belakang dan border kartu ini dibentuk dari fragmen <code>--hue</code>.</p>
+          <span class="hsl-badge">Mobile: Biru (210) ➔ Tablet/Desktop: Hijau Emerald (160)</span>
+        </div>
+
+        <!-- Demo Box 2: Gradient Fragments -->
+        <div class="gradient-hero">
+          <h3>💎🔥 2. Gradient Fragment Hero</h3>
+          <p>Sudut dan gradasi warna banner ini secara otomatis berganti dari <em>Deep Blue-Purple (135deg)</em> menjadi <em>Magenta-Orange (90deg)</em> pada layar besar.</p>
+        </div>
+      </div>
+
+      <!-- Snippet Kode HTML -->
+      <div style="margin-top: 24px;">
+        <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-sub); display: block; margin-bottom: 6px;">HTML Structure Snippet:</span>
+        <pre><code class="language-html">&lt;!-- 1. HSL Color Fragment Component --&gt;
+&lt;div class="hsl-card"&gt;
+  &lt;h3&gt;HSL Color Fragment Demo&lt;/h3&gt;
+  &lt;span class="hsl-badge"&gt;Dynamic Hue Fragment&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- 2. Gradient Fragment Component --&gt;
+&lt;div class="gradient-hero"&gt;
+  &lt;h3&gt;Gradient Fragment Hero&lt;/h3&gt;
+  &lt;p&gt;Linear gradient dibangun dari fragmen sudut &amp; hue&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Prism.js Scripts for Syntax Highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+</body>
+</html>

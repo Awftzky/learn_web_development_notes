@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan 10e: Tantangan CSS Variables & Scrollbar Gutter (Start)</title>
+  <style>
+    /* ==========================================================================
+       TODO 5: PREVENT SCROLLBAR GLITCH / LAYOUT SHIFT (SCROLLBURGLAR)
+       Pesan ruang scrollbar sejak awal agar layout tidak bergeser saat kurikulum dibuka.
+       ========================================================================== */
+    html {
+      scrollbar-gutter: stable;
+    }
+
+    /* ==========================================================================
+       1. CSS RESET & BASE LAYOUT (Jangan diubah bagian ini)
+       ========================================================================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      min-height: 100vh;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .header-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .badge-category {
+      display: inline-block;
+      background-color: rgba(59, 130, 246, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .header-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .header-text {
+      color: #94a3b8;
+      font-size: 1rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ==========================================================================
+       TODO 1: GLOBAL TOKENIZATION (:root)
+       Daftarkan token desain dasar aplikasi di :root untuk warna, spasi, dan radius.
+       ========================================================================== */
+    :root {
+        --main-color: #3b82f6;
+        --main-color-dark: #1d4ed8;
+
+        --spacing-md : 16px;
+        --radius-md: 12px;
+
+        --button-touch-height: 36px;
+
+
+    }
+
+                @media (pointer: coarse){
+                  :root {
+          --button-touch-target: 44px;
+                  }
+        }
+
+
+
+
+    /* ==========================================================================
+       TODO 2 & 4: COMPONENT ISOLATION & VARIABLE FRAGMENTS (.course-card)
+       ========================================================================== */
+    .course-card {
+      /* TODO 4a: Buat variabel fragmen lokal sebagai warna tema default di mobile beri nilai 220 (Hue warna biru) */
+      --theme-hue: 220;
+      
+
+      /* TODO 4b: Gunakan fungsi hsl() untuk menggabungkan fragmen tema warna tadi menjadi background HSL yang lebih lembut dengan saturasi 35% dan lightness 15%, lalu tambahkan border dengan hsl() menggunakan hue yang sama, saturasi 60%, dan lightness 30% */
+            background-color: hsl(var(--theme-hue), 35%, 15%);
+
+      border: 2px solid hsl(var(--theme-hue), 35%, 15%);
+      /* Ubah nilainya */
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .card-badge {
+      /* Menggunakan warna aksen dari fragmen HSL */
+      background-color: rgba(59, 130, 246, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+
+    /* Accordion Detail Kurikulum (Buka ini untuk menguji kemunculan scrollbar) */
+    details {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+
+    summary {
+      font-weight: 600;
+      color: #38bdf8;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    details ul {
+      margin-top: 10px;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* TODO 2: COMPONENT ISOLATION TOMBOL (.btn-enroll) */
+    .btn-enroll {
+      /* TODO 2a: Buat variabel local untuk menampung nilai warna background dari variabel global warna utama */
+      --btn-bg: var(--main-color-dark);
+      /* TODO 2b: Terapkan properti background-color, border-radius, dan height menggunakan variabel lokal yang sudah disiapkan di atas. Ingat, penulisan properti ini CUMA 1 KALI! */
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: var(--btn-bg);
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 0 20px;
+      height: var(--button-touch-height);
+      min-height: 36px;
+
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      transition: all 0.2s ease;
+    }
+
+    /* TODO 2c: Ubah properti background-color menjadi menggunakan variabel lokal yang sudah disiapkan di atas, isi nilainya dari properti global untuk warna gelap */
+    .btn-enroll:hover {
+      --btn-bg: var(--main-color-dark);
+    }
+
+
+    /* ==========================================================================
+       TODO 4c: MEDIA QUERY OVERRIDE (DESKTOP)
+       ========================================================================== */
+    @media (min-width: 48em) {
+      .course-card {
+        --theme-hue:160;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Header Section -->
+    <header class="header-section">
+      <span class="badge-category">KURSUS WEB FUNDAMENTAL</span>
+      <h1 class="header-title">Modul Pembelajaran WPU</h1>
+      <p class="header-text">Pilih modul pembelajaran dan buka rincian kurikulum untuk menguji kemunculan scrollbar.</p>
+    </header>
+
+    <!-- Card Grid Section (2 Kartu Modul) -->
+    <main class="card-grid">
+
+      <!-- Kartu 1: Modul 15 -->
+      <div class="course-card">
+        <div>
+          <span class="card-badge">MODUL 15</span>
+          <h2 class="card-title">CSS Grid &amp; Layout Modern</h2>
+          <p class="card-desc">Kuasai arsitektur layout dua dimensi, grid template areas, dan pembuatan tata letak web
+            kompleks yang responsif.</p>
+
+          <!-- Element Accordion untuk memicu Scrollbar Glitch -->
+          <details>
+            <summary>Buka Kurikulum Lengkap Modul 15</summary>
+            <ul>
+              <li>15.1 Pengenalan Konsep Grid 2D vs Flexbox 1D</li>
+              <li>15.2 Grid Container &amp; Grid Items Properties</li>
+              <li>15.3 Implicit vs Explicit Grid &amp; Auto-Placement</li>
+              <li>15.4 Grid Template Areas &amp; Named Lines</li>
+              <li>15.5 Minmax(), Repeat(), Fit-Content &amp; Auto-Fit</li>
+              <li>15.6 Responsive Layout Tanpa Media Query (RAM Pattern)</li>
+              <li>15.7 Studi Kasus: Dashboard Analytics Multi-Widget</li>
+              <li>15.8 Workshop Final: Portal E-Commerce Layout</li>
+            </ul>
+          </details>
+        </div>
+        <button class="btn-enroll">Lihat Materi</button>
+      </div>
+
+      <!-- Kartu 2: Modul 16 -->
+      <div class="course-card">
+        <div>
+          <span class="card-badge">MODUL 16</span>
+          <h2 class="card-title">Responsive Web Design &amp; CSS Variables</h2>
+          <p class="card-desc">Pelajari media queries modern, touch target optimization, dan pembuatan sistem CSS
+            Variables &amp; Fragments yang DRY.</p>
+
+          <!-- Element Accordion untuk memicu Scrollbar Glitch -->
+          <details>
+            <summary>Buka Kurikulum Lengkap Modul 16</summary>
+            <ul>
+              <li>16.1 Filosofi Mobile-First &amp; Viewport Meta Tag</li>
+              <li>16.2 Fluid Typography &amp; Fluid Spacing (Clamp, Calc)</li>
+              <li>16.3 Responsive Media, Images, &amp; Aspect Ratio</li>
+              <li>16.4 Media Feature Queries (Pointer, Prefers-ColorScheme)</li>
+              <li>16.5 Scrollbar Glitch &amp; Scrollburglar (Scrollbar-Gutter)</li>
+              <li>16.6 Global Tokenization &amp; Component Isolation</li>
+              <li>16.7 Variable Fragments &amp; Media Query Overrides</li>
+              <li>16.8 Container Queries &amp; Intrinsic Design Pattern</li>
+            </ul>
+          </details>
+        </div>
+        <button class="btn-enroll">Lihat Materi</button>
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+
+</html>
