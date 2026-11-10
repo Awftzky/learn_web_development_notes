@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CARA CALL TAILWIND DENGAN CDN
+    WARNING :
+    1. The Play CDN is designed for development purposes only, and is not intended for production.
+    2. The Play CDN Does not Support auto-suggesting classes, so you will need to know the class names you want to use. -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&display=swap"
+      rel="stylesheet"
+    />
+    <title>Test Tailwind</title>
+
+    <!-- TAILWIND USING CLI -->
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body
+    class="bg-white text-slate-800 transition-colors duration-300 dark:bg-slate-800 dark:text-slate-200"
+  >
+    <h1 class="text-6xl font-extrabold text-center my-12">
+      Belajar
+      <span
+        class="bg-linear-to-r from-indigo-500 to-teal-200 bg-clip-text text-transparent"
+        >Tailwind</span
+      >
+      Gaskeunn Barudak
+    </h1>
+    <!-- UTILITY SPACING -->
+    <section
+      class="mb-10 bg-linear-to-r from-indigo-400 via-blue-500 to-amber-100"
+    >
+      <h2 class="font-creepster text-3xl">Utility Spacing</h2>
+      <h4 class="p-4 pb-1 pt-1 pr-1 pl-1 px-1 py-1">Padding</h4>
+      <h4 class="m-4 mx-2 my-2 mt-1 mb-1 ml-1 mr-1">Margin</h4>
+    </section>
+
+    <section>
+      <h2>Sizing</h2>
+      <div class="w-1/2 bg-amber-950">Kotak 1</div>
+      <!-- Max Height -->
+      <div class="min-w-min bg-emerald-950">Kotak 2</div>
+      <div class="max-w-max">Kotak 3</div>
+
+      <!-- Min Height -->
+      <div class="min-h-max">Kotak 4</div>
+      <div class="min-h-min">Kotak 5</div>
+      <div class="min-h-screen">Kotak 6</div>
+    </section>
+
+    <section class="mb-4 max-w-3xl mx-auto">
+      <h2>Typography</h2>
+      <div class="mb-4">By Aufa Azzaky Arief</div>
+
+      <p class="font-creepster text-2xl italic">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Necessitatibus, doloribus aperiam minima, at rerum voluptatibus possimus
+        quaerat dolor quo fuga exercitationem. Delectus, mollitia recusandae
+        fugiat soluta odio quo cupiditate atque?
+      </p>
+      <p class="mb-4">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati eos
+        deserunt eius facilis est commodi, dolore fuga doloribus velit
+        necessitatibus totam ipsum! Veniam vel ipsum sit. Dolorum soluta maiores
+        voluptatem.
+      </p>
+    </section>
+
+    <h1 class="text-6xl font-extrabold text-center my-12">
+      Utility
+      <span
+        class="bg-linear-to-r from-indigo-500 to-teal-200 bg-clip-text text-transparent"
+        >Tailwind</span
+      >
+      Ke 2 Barudak
+    </h1>
+
+    <div class="max-w-xl mx-auto overflow-auto b">
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
+        asperiores doloribus rerum labore architecto ex placeat voluptate
+        dignissimos! Corporis deserunt nisi numquam blanditiis, iusto quisquam
+        debitis sunt? Soluta quae fuga error. Est necessitatibus non id
+        quibusdam, nihil tempore expedita, at aspernatur quisquam quas beatae.
+        Vel voluptatem voluptate labore corrupti! Vero reiciendis libero quo
+        delectus cumque debitis molestiae nulla rem ad. Quia, pariatur illum!
+        Explicabo velit ea veniam necessitatibus ex sint quos voluptate
+        consectetur deleniti sequi, illum facilis impedit, voluptatum alias
+        aliquam fugiat, quas nostrum vero? Error molestias aperiam temporibus
+        quisquam blanditiis dolore, vero, a voluptatum sit reiciendis alias,
+        obcaecati quod?
+      </p>
+    </div>
+
+    <!-- MENGGUNAKAN BG COVER, CONTAIN DLL -->
+    <div
+      class="mt-4 max-w-xl mx-auto h-96 bg-amber-200 bg-cover rounded-2xl shadow-2xl shadow-amber-400 overflow-hidden blur-sm hover:blur-none"
+      style="background-image: url(/img/img.jpg)"
+    >
+      <!-- <div class="w-full h-full bg-amber-100 mix-blend-multiply"></div> -->
+    </div>
+
+    <hr class="my-20" />
+
+    <div class="flex items-center justify-center">
+      <span class="mr-2 text-sm text-slate-400">Light</span>
+
+      <input type="checkbox" id="toggle" class="sr-only" />
+
+      <label for="toggle" class="cursor-pointer">
+        <div
+          class="flex h-6 w-10 items-center rounded-full bg-slate-500 p-1 transition-colors duration-300"
+        >
+          <div
+            class="toggle-circle h-4 w-4 rounded-full bg-white transition-transform duration-300"
+          ></div>
+        </div>
+      </label>
+
+      <span class="ml-2 text-sm text-slate-400">Dark</span>
+    </div>
+
+    <!-- <button
+      class="p-4 bg-amber-900 text-white rounded-2xl hover:bg-amber-700 font-creepster block mx-auto focus:ring focus:ring-amber-600"
+    >
+      Submit
+    </button> -->
+
+    <div
+      class="max-w-lg my-10 border border-slate-200 p-5 shadow-xl mx-auto rounded-2xl hover:bg-sky-200 group"
+    >
+      <h5 class="mb-4 text-2xl font-bold group-hover:text-white">MyCard</h5>
+      <p
+        class="text-justify text-slate-600 group-hover:text-amber-50 selection:bg-lime-300 first-letter:text-5xl mr-4 first-letter:float-left first-letter:mr-4"
+      >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex hic ullam
+        est vel, facere labore tempore, ut accusantium beatae delectus adipisci
+        quibusdam ipsam consequatur numquam ducimus aliquam. Repellendus
+        quaerat, dignissimos mollitia exercitationem maiores tempore consectetur
+        velit molestiae modi vero delectus repudiandae excepturi ipsam autem,
+        eveniet dolorum blanditiis odio. Recusandae, provident!
+      </p>
+    </div>
+
+    <div
+      class="max-w-lg my-10 border border-slate-200 bg-white p-6 shadow-xl mx-auto rounded-2xl"
+    >
+      <h2 class="mb-6 text-2xl font-bold text-slate-800">Masuk ke Akun</h2>
+
+      <form action="" method="post" class="space-y-5">
+        <!-- Field email -->
+        <div>
+          <label for="email" class="form-label form-label-required"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Masukkan email"
+            autocomplete="email"
+            required
+            class="form-input"
+          />
+        </div>
+
+        <!-- Field password -->
+        <div>
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Masukkan password"
+            autocomplete="current-password"
+            class="form-input"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-sky-600 px-4 py-3 font-semibold text-white transition hover:bg-sky-700 focus:ring-4 focus:ring-sky-200 focus:outline-none"
+        >
+          Masuk
+        </button>
+      </form>
+    </div>
+
+    <hr class="my-20" />
+
+    <!-- MATERI TRANSFORM‼️
+    Transform mengubah bentuk atau posisi visual elemen tanpa mengubah layout di sekitarnya.
+
+    1. scale-*     : memperbesar atau memperkecil elemen. Contoh: scale-110.
+    2. rotate-*    : memutar elemen berdasarkan derajat. Contoh: rotate-45.
+    3. translate-* : menggeser elemen pada sumbu X atau Y. Contoh: translate-x-4.
+    4. skew-*      : memiringkan bentuk elemen. Contoh: skew-x-6.
+    5. origin-*    : menentukan titik pusat transformasi. Contoh: origin-top-left.
+
+    Gunakan prefix seperti hover: agar transform aktif ketika kursor diarahkan ke elemen.
+    -->
+    <div
+      class="w-40 h-40 bg-sky-600 mx-auto rounded-lg shadow-lg hover:scale-105 hover:rotate-40 mb-20"
+    ></div>
+
+    <section class="mx-auto mb-24 max-w-4xl px-6">
+      <h2 class="mb-2 text-3xl font-bold">Transition & Animation</h2>
+      <p class="mb-8 text-slate-600 dark:text-slate-300">
+        Transition menghaluskan perubahan state, sedangkan animation dapat
+        menjalankan rangkaian gerakan melalui keyframes.
+      </p>
+
+      <!-- MATERI TRANSITION‼️
+      Transition membutuhkan pemicu, misalnya hover:, focus:, atau perubahan class.
+
+      1. transition-* : memilih properti yang dianimasikan. Contoh: transition-transform.
+      2. duration-*   : mengatur durasi. Contoh: duration-500 = 500ms.
+      3. ease-*       : mengatur pola kecepatan. Contoh: ease-in-out.
+      4. delay-*      : memberi jeda sebelum dimulai. Contoh: delay-150.
+      -->
+      <div
+        class="mb-12 rounded-2xl border border-slate-200 p-6 dark:border-slate-700"
+      >
+        <h3 class="mb-2 text-lg font-semibold">Contoh transition</h3>
+        <p class="mb-8 text-sm text-slate-500 dark:text-slate-400">
+          Arahkan kursor ke kotak untuk melihat perubahan yang halus.
+        </p>
+        <div
+          class="mx-auto h-32 w-32 rounded-xl bg-sky-600 shadow-lg transition-all duration-500 ease-in-out hover:rotate-12 hover:scale-110 hover:bg-amber-400"
+        ></div>
+      </div>
+
+      <!-- MATERI ANIMATION‼️
+      Animation menggunakan @keyframes dan dapat berjalan tanpa pemicu.
+
+      Utility bawaan Tailwind:
+      1. animate-spin   : berputar terus-menerus.
+      2. animate-ping   : membesar lalu menghilang, cocok untuk indikator.
+      3. animate-pulse  : opacity naik-turun, cocok untuk skeleton/loading.
+      4. animate-bounce : bergerak naik-turun.
+
+      Gunakan animate-none untuk menghentikan animation.
+      Gunakan motion-safe/motion-reduce untuk menghormati preferensi pengguna.
+      -->
+      <div
+        class="rounded-2xl border border-slate-200 p-6 dark:border-slate-700"
+      >
+        <h3 class="mb-6 text-lg font-semibold">Contoh animation</h3>
+
+        <div class="grid grid-cols-2 gap-8 text-center sm:grid-cols-4">
+          <div>
+            <div
+              class="mx-auto mb-3 h-12 w-12 rounded-full border-4 border-sky-200 border-t-sky-600 motion-safe:animate-spin"
+            ></div>
+            <span class="text-sm">animate-spin</span>
+          </div>
+
+          <div>
+            <div class="relative mx-auto mb-3 h-12 w-12">
+              <span
+                class="absolute inset-0 rounded-full bg-sky-400 motion-safe:animate-ping"
+              ></span>
+              <span class="absolute inset-0 rounded-full bg-sky-600"></span>
+            </div>
+            <span class="text-sm">animate-ping</span>
+          </div>
+
+          <div>
+            <div
+              class="mx-auto mb-3 h-12 w-12 rounded-xl bg-violet-500 motion-safe:animate-pulse"
+            ></div>
+            <span class="text-sm">animate-pulse</span>
+          </div>
+
+          <div>
+            <div
+              class="mx-auto mb-3 h-12 w-12 rounded-full bg-amber-400 motion-safe:animate-bounce"
+            ></div>
+            <span class="text-sm">animate-bounce</span>
+          </div>
+        </div>
+
+        <!-- Custom utility dibuat di input.css melalui --animate-orbit-pop. -->
+        <div
+          class="mt-16 border-t border-slate-200 pt-10 text-center dark:border-slate-700"
+        >
+          <div
+            class="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-[35%] bg-linear-to-br from-fuchsia-500 via-violet-500 to-sky-400 text-3xl shadow-lg motion-safe:animate-orbit-pop motion-reduce:animate-none"
+            aria-hidden="true"
+          >
+            ✦
+          </div>
+          <h4 class="font-semibold">Custom: animate-orbit-pop</h4>
+          <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+            Kombinasi gerak mengorbit, berputar, dan efek lentur.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-20" />
+    <!-- LAYOUTING TAILWIND 
+     1. Container
+     2. Float 
+     3. Position 
+     4. Columns
+    -->
+
+    <div class="container mx-auto">
+      <div class="border rounded-lg shadow-lg p-10 relative">
+        <div
+          class="w-10 h-10 rounded-full flex bg-amber-200 absolute -top-5 -right-5 cursor-pointer"
+        >
+          <span class="text-1xl m-auto">X</span>
+        </div>
+        <img
+          src="/img/img.jpg"
+          alt=""
+          width="150"
+          class="float-left rounded-2xl mr-4"
+        />
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. A saepe culpa
+          eaque, iure dolor recusandae dolores laudantium deleniti. Amet iste
+          laboriosam veritatis accusamus cum ipsa iusto. Rem doloremque,
+          expedita ipsam cupiditate consectetur, culpa non id ea vel quibusdam
+          aliquam dolor! Quae quam vel voluptatibus optio nihil amet. Vitae
+          voluptatum nobis dolorum? Voluptatibus facere, ducimus nulla quae
+          aspernatur, neque iste blanditiis officiis nemo quidem rerum incidunt
+          quis! Autem, odit itaque minus laborum molestiae consectetur quam
+          deleniti illo sunt optio, temporibus harum cupiditate iusto excepturi
+          tenetur asperiores! Tenetur exercitationem eaque nulla blanditiis
+          reprehenderit, dolores eveniet fugit dolorum incidunt debitis facere
+          fugiat mollitia.
+        </p>
+      </div>
+    </div>
+
+    <div class="container mx-auto shadow-lg rounded-lg p-10 mt-20 columns-3">
+      <img src="/img/img.jpg" alt="" class="w-full h-full mb-4" />
+      <img src="/img/img.jpg" alt="" class="w-full h-full mb-4" />
+      <img src="/img/img.jpg" alt="" class="w-full h-full mb-4" />
+      <img src="/img/img.jpg" alt="" class="w-full h-full mb-4" />
+      <img src="/img/img.jpg" alt="" class="w-full h-full mb-4" />
+    </div>
+
+    <hr class="my-20" />
+
+    <!-- RESPONSIVE DESIGN MENGGUNAKAN BREAKPOINT
+    1. SM
+    2. MD
+    3, XL
+    -->
+    <section
+      class="mx-auto mb-20 max-w-6xl px-6 py-10 sm:rounded-3xl sm:bg-amber-50 md:bg-transparent lg:flex lg:items-center lg:gap-12 lg:px-8 dark:sm:bg-slate-900 dark:md:bg-transparent"
+    >
+      <!-- ELEMEN 1 -->
+      <div class="lg:w-1/2">
+        <p class="mb-2 font-semibold tracking-widest text-red-600 uppercase">
+          SwenCode
+        </p>
+        <h3
+          class="text-3xl font-bold tracking-tight text-slate-800 sm:text-4xl dark:text-slate-100"
+        >
+          Aufa Azzaky Arief
+        </h3>
+
+        <!-- Gambar mobile/tablet: disembunyikan mulai breakpoint lg. -->
+        <img
+          src="/img/img.jpg"
+          alt="Aufa Azzaky Arief"
+          class="mt-6 aspect-video w-full rounded-2xl object-cover shadow-xl lg:hidden"
+        />
+
+        <h2
+          class="mt-6 text-2xl leading-tight font-semibold text-slate-800 dark:text-slate-100"
+        >
+          Mari Belajar Programming with SwenCode
+        </h2>
+        <p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio culpa
+          quisquam tempora. Eligendi nam hic iusto, sint quidem a fugiat in
+          obcaecati explicabo possimus quisquam nihil neque repellat
+          perspiciatis natus reiciendis sapiente. Accusamus explicabo tempora
+          nulla eveniet molestiae doloribus recusandae esse harum repudiandae
+          iusto veritatis vero, deleniti consequuntur, perspiciatis odit.
+        </p>
+        <div class="mt-7">
+          <a
+            href="#"
+            class="inline-block rounded-xl bg-red-600 px-6 py-3 font-semibold tracking-wide text-white shadow-lg shadow-red-600/20 transition hover:-translate-y-0.5 hover:bg-red-700 focus:ring-4 focus:ring-red-200 focus:outline-none"
+            >Subscribe SwenCode!</a
+          >
+        </div>
+      </div>
+
+      <!-- ELEMEN 2 -->
+      <!-- Hidden secara default, lalu muncul sebagai kolom kanan pada lg. -->
+      <div class="hidden lg:block lg:w-1/2">
+        <img
+          src="/img/img.jpg"
+          alt="Aufa Azzaky Arief sedang belajar programming"
+          class="aspect-[4/5] w-full rounded-3xl object-cover shadow-2xl"
+        />
+      </div>
+    </section>
+
+    <section class="mx-auto mb-24 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-10 text-center">
+        <p class="mb-2 font-semibold tracking-widest text-sky-600 uppercase">
+          Collection
+        </p>
+        <h2 class="text-3xl font-bold sm:text-4xl">My Gallery</h2>
+        <p class="mx-auto mt-3 max-w-2xl text-slate-600 dark:text-slate-300">
+          Gallery responsive menggunakan Flexbox dan breakpoint Tailwind.
+        </p>
+      </div>
+
+      <!--
+      Responsive Flexbox:
+      Default = 1 card, sm = 2 card, md = 3 card, lg = 5 card.
+      Padding px-2 pada wrapper card menjadi jarak antarkartu.
+      -->
+      <div class="-mx-2 flex flex-wrap">
+        <!-- CARD 1 -->
+        <div class="w-full px-2 pb-4 sm:w-1/2 md:w-1/3 lg:w-1/5">
+          <article class="card">
+            <img
+              src="/img/img.jpg"
+              alt="Gallery programming 1"
+              class="aspect-4/3 w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">
+                Card Pertama
+              </h3>
+              <p
+                class="mt-2 flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300"
+              >
+                Belajar dasar pemrograman dengan materi yang mudah dipahami.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="w-full px-2 pb-4 sm:w-1/2 md:w-1/3 lg:w-1/5">
+          <article class="card">
+            <img
+              src="/img/img.jpg"
+              alt="Gallery programming 2"
+              class="aspect-4/3 w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">
+                Card Kedua
+              </h3>
+              <p
+                class="mt-2 flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300"
+              >
+                Mengenal utility Tailwind untuk membuat tampilan modern.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="w-full px-2 pb-4 sm:w-1/2 md:w-1/3 lg:w-1/5">
+          <article class="card">
+            <img
+              src="/img/img.jpg"
+              alt="Gallery programming 3"
+              class="aspect-4/3 w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">
+                Card Ketiga
+              </h3>
+              <p
+                class="mt-2 flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300"
+              >
+                Membuat layout responsive untuk berbagai ukuran layar.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="w-full px-2 pb-4 sm:w-1/2 md:w-1/3 lg:w-1/5">
+          <article
+            class="card""
+          >
+            <img
+              src="/img/img.jpg"
+              alt="Gallery programming 4"
+              class="aspect-4/3 w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">
+                Card Keempat
+              </h3>
+              <p
+                class="mt-2 flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300"
+              >
+                Menerapkan transform dan transition pada komponen UI.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="w-full px-2 pb-4 sm:w-1/2 md:w-1/3 lg:w-1/5">
+          <article
+            class="card"
+          >
+            <img
+              src="/img/img.jpg"
+              alt="Gallery programming 5"
+              class="aspect-4/3 w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div class="flex flex-1 flex-col p-5">
+              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">
+                Card Kelima
+              </h3>
+              <p
+                class="mt-2 flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300"
+              >
+                Menyatukan semua materi menjadi tampilan yang konsisten.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-20 g" />
+
+    <!-- GRID 
+    1. MENGGUNAKAN ASPECT RATIO UNTUK LAYAR FIX, TERDAPAT: VIDEO,SQUARE & CUSTOM 
+    -->
+     <div class="mt-64 p-2 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4 md:p-4 ">
+      <h2 class="text-xl font-semibold text-slate-700 md:col-start-4 md:row-start-2 md:flex"><span class="self-center">Welcome to TAILWIND</span></h2>
+      <div class="h-1.5 text-lg font-bold text-slate-500 md:col-start-2 md:row-start-2 md:flex"><span class="self-center">@awftzky</span></div>
+
+      <div class="group overflow-hidden rounded-lg"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2" style="background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+      <div class="group overflow-hidden rounded-lg"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-2" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+      <div class="group overflow-hidden rounded-lg"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+      <div class="group overflow-hidden rounded-lg"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-2" style="background-image: url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+      <div class="group overflow-hidden rounded-lg"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2" style="background-image: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+      <div class="group overflow-hidden rounded-lg md:col-start-2"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-2" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>  <!--  DIV 6 -->
+      <div class="group overflow-hidden rounded-lg md:col-start-4"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+      <div class="group overflow-hidden rounded-lg"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-2" style="background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+      <div class="group overflow-hidden rounded-lg"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+      <div class="group overflow-hidden rounded-lg md:col-start-3"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-2" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+      <div class="group overflow-hidden rounded-lg md:col-start-3"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:rotate-2" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+      <div class="group overflow-hidden rounded-lg"><div class="w-full bg-cover bg-center aspect-[640/480] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-2" style="background-image: url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=640&h=480&q=80')"></div></div>
+     </div>
+
+    <hr class="my-20" />
+
+    <!-- FUNCTION & DIRECTIVES -->
+     
+
+    <script>
+      const checkbox = document.querySelector("#toggle");
+      const html = document.querySelector("html");
+
+      checkbox.addEventListener("change", function () {
+        html.classList.toggle("dark", checkbox.checked);
+      });
+    </script>
+  </body>
+</html>

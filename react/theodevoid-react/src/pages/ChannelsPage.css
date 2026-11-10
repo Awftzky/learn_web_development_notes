@@ -1,0 +1,120 @@
+.channel-table-wrapper {
+  width: min(100% - 32px, 800px);
+  margin: 0 auto 24px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.channel-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.channel-table th,
+.channel-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.channel-table th {
+  background: var(--code-bg);
+  color: var(--text-h);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.channel-table tbody tr:nth-child(even) {
+  background: var(--social-bg);
+}
+
+.channel-table tbody tr:hover {
+  background: var(--accent-bg);
+}
+
+.channel-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.channel-table button {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--text-h);
+  cursor: pointer;
+}
+
+.channel-table button:hover {
+  border-color: var(--accent-border);
+}
+
+.channel-table button + button {
+  margin-left: 8px;
+}
+
+.channel-edit-form {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  width: min(100% - 32px, 800px);
+  margin: 0 auto 24px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--social-bg);
+  text-align: left;
+}
+
+.channel-edit-field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-h);
+  font-size: 0.9rem;
+}
+
+.channel-edit-field input {
+  width: 100%;
+  padding: 9px 10px;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.channel-edit-form button {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--text-h);
+  cursor: pointer;
+}
+
+.channel-edit-form button:hover {
+  border-color: var(--accent-border);
+}
+
+.channel-edit-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+  .channel-table th,
+  .channel-table td {
+    padding: 10px 12px;
+  }
+
+  .channel-edit-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

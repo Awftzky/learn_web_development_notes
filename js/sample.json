@@ -1,0 +1,16 @@
+{
+  "name": "Aufa Azzaky",
+  "age": 20,
+  "isCinephile": true,
+  "address": {
+    "street": "GG Pasalipan, Kost Ibu Tri",
+    "city": "Bandung",
+    "country": "Indonesia"
+  },
+  "movies": [
+    "Come And See",
+    "The Good, The Bad and The Ugly",
+    "The Empire Strikes Back",
+    "Paris, Texas"
+  ]
+}

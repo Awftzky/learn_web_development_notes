@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise Static Method</title>
+  </head>
+  <body>
+    <h1>Promise Static Method</h1>
+    <p id="all"></p>
+    <p id="race"></p>
+
+    <script>
+      const promise1 = Promise.resolve("Data pertama");
+      const promise2 = Promise.resolve("Data kedua");
+      const promise3 = Promise.resolve("Data ketiga");
+
+      // Menunggu semua Promise selesai.
+      Promise.all([promise1, promise2, promise3]).then(function (results) {
+        document.getElementById("all").textContent = results.join(", ");
+      });
+
+      // Mengambil Promise yang paling cepat selesai.
+      Promise.race([promise1, promise2, promise3]).then(function (result) {
+        document.getElementById("race").textContent = result;
+      });
+    </script>
+  </body>
+</html>

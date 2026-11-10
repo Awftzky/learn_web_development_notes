@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attribute</title>
+  </head>
+  <body>
+    <main>
+      <img id="logo" src="test" alt="" />
+
+      <div>
+        <img id="logo2" src="" alt="JEKI" />
+      </div>
+    </main>
+    <script>
+      const logo = document.getElementById("logo");
+      //   const src = logo.getAttributeNode("src");
+      const src = logo.getAttribute("src");
+
+      console.info(src);
+
+      // MEMBUAT ATTRIBUTE
+      const logo2 = document.getElementById("logo2");
+      logo2.setAttribute("src", "https://");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <ul id="menu">
+        <li id="first">first</li>
+        <li id="second">second</li>
+        <li id="third">third</li>
+      </ul>
+    </main>
+    <script>
+      const menu = document.getElementById("menu");
+      console.info(menu);
+
+      const second = document.getElementById("second");
+      console.info(second);
+
+      // NODE PROPERTY
+      console.info(menu.childNodes);
+
+      console.info(second.textContent);
+      console.info(second.previousSibling);
+      console.info(second.nextSibling);
+
+      // NODE METHOD
+      menu.removeChild(document.getElementById("first"));
+      menu.removeChild(document.getElementById("second"));
+      menu.removeChild(document.getElementById("third"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class Module</title>
+  </head>
+  <body>
+    <h1>Class Module</h1>
+    <p id="movie-info"></p>
+
+    <script type="module">
+      import { Movie } from "./class.mjs";
+
+      const movie = new Movie("Interstellar", 2014);
+
+      console.info(movie.getInfo());
+      document.querySelector("#movie-info").textContent = movie.getInfo();
+    </script>
+  </body>
+</html>

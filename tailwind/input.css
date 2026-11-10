@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* Aktifkan dark mode berdasarkan class="dark" yang diatur oleh JavaScript. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+  .card {
+    @apply flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md transition duration-300;
+
+    @variant hover {
+      @apply -translate-y-1 shadow-xl;
+    }
+
+    @variant dark {
+      @apply border-slate-700 bg-slate-900;
+    }
+  }
+}
+@theme {
+  ----text-primary: #1e293b;
+  ----text-secondary: #64748b;
+}
+
+@theme {
+  --font-creepster: "Creepster", cursive;
+
+  /*
+   * Format: nama-keyframe durasi timing-function perulangan
+   * Variabel ini otomatis membuat utility `animate-orbit-pop`.
+   */
+  --animate-orbit-pop: orbit-pop 3.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+
+  /*
+   * Animasi hanya mengubah transform agar tetap ringan di browser.
+   * translate3d = posisi, rotate = putaran, scale = efek lentur.
+   */
+  @keyframes orbit-pop {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(-3deg) scale(1);
+    }
+
+    25% {
+      transform: translate3d(10px, -14px, 0) rotate(4deg) scale(1.06, 0.94);
+    }
+
+    50% {
+      transform: translate3d(0, -24px, 0) rotate(0deg) scale(0.96, 1.06);
+    }
+
+    75% {
+      transform: translate3d(-10px, -12px, 0) rotate(-4deg) scale(1.03, 0.97);
+    }
+  }
+}
+
+@layer components {
+  .form-label {
+    @apply mb-2 block text-sm font-semibold text-slate-700;
+  }
+
+  .form-label-required::after {
+    content: " *";
+    @apply text-red-500;
+  }
+
+  .form-input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-sky-500 focus:ring-4 focus:ring-sky-100 invalid:text-pink-700 invalid:ring-pink-100 invalid:focus:border-pink-500 invalid:focus:ring-pink-500;
+  }
+}
+
+#toggle:checked ~ label div.toggle-circle {
+  @apply translate-x-4;
+}
+
+#toggle:checked ~ label > div {
+  @apply bg-sky-500;
+}

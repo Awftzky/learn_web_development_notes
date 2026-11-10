@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Module</title>
+  </head>
+  <body>
+    <h1>Dynamic Module</h1>
+
+    <label for="name">Nama:</label>
+    <input type="text" id="name" placeholder="Masukkan nama" />
+    <button type="button" id="hello-button">Say Hello</button>
+
+    <script type="module">
+      const nameInput = document.getElementById("name");
+      const helloButton = document.getElementById("hello-button");
+
+      helloButton.onclick = async function () {
+        const name = nameInput.value;
+
+        // Module baru di-import ketika tombol diklik.
+        const { alertHello } = await import("./dynamic-module.mjs");
+        alertHello(name);
+      };
+    </script>
+  </body>
+</html>

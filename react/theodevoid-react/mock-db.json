@@ -1,0 +1,39 @@
+{
+  "channel": [
+    {
+      "id": "1",
+      "name": "Swencode"
+    },
+    {
+      "id": "2",
+      "name": "Theodevoid"
+    },
+    {
+      "name": "",
+      "id": "WicVqDOe1wU"
+    },
+    {
+      "name": "",
+      "id": "dUcDFnhy61c"
+    },
+    {
+      "name": "",
+      "id": "Q5bgw_VNaIc"
+    },
+    {
+      "name": "",
+      "id": "CEjfVpNgeEk"
+    },
+    {
+      "name": "",
+      "id": "7ZyysdAfaxg"
+    },
+    {
+      "name": "",
+      "id": "BdihDlyBpP4"
+    }
+  ],
+  "product": [],
+  "todos": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

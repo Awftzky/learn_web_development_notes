@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Named Export</title>
+  </head>
+  <body>
+    <h1>Named Export</h1>
+    <p id="greeting"></p>
+
+    <script type="module">
+      import { sayHello } from "./say.mjs";
+
+      const greeting = sayHello("Zaky");
+      document.querySelector("#greeting").textContent = greeting;
+    </script>
+  </body>
+</html>

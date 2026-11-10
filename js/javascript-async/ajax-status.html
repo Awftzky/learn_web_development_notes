@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX WITH STATUS</title>
+  </head>
+  <h1 id="response"></h1>
+  <body>
+    <script>
+      const ajax = new XMLHttpRequest();
+
+      function displayResponse(json) {
+        const header = document.getElementById("response");
+        header.textContent = json.response;
+      }
+
+      //   ajax.open("GET", "api/hello.json");
+      ajax.open("GET", "api/salah.json");
+      ajax.addEventListener("load", function () {
+        if (ajax.status == 200) {
+          const json = JSON.parse(ajax.responseText);
+          displayResponse(json);
+        } else {
+          displayResponse({
+            response: `Terjadi Kesalahan dengan ${ajax.status}`,
+          });
+        }
+      });
+
+      ajax.send();
+    </script>
+  </body>
+</html>

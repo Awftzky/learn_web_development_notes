@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async Await</title>
+  </head>
+  <body>
+    <script>
+      const getProduct = () => {
+        const request = new Request("../api/product.json", {
+          method: "GET",
+        });
+
+        const response = fetch(request);
+
+        return response.then((response) => response.json());
+      };
+
+      async function getProductNameAsync() {
+        try {
+          const product = await getProduct();
+          return product.name;
+        } catch (e) {
+          return "Product Not Found";
+        }
+      }
+
+      getProductNameAsync().then((name) => console.info(name));
+    </script>
+  </body>
+</html>

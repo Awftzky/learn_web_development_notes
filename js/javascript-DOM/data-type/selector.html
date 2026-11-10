@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="paraghraph"></p>
+
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+
+    <main class="test">
+      <ul>
+        <li class="test-tem"></li>
+        <li></li>
+        <li class="test-item"></li>
+      </ul>
+    </main>
+
+    <div class="aufa">aufa</div>
+    <div class="azzaky">azzaky</div>
+    <div class="arief">arief</div>
+  </body>
+  <script>
+    const element = document.querySelectorAll("*");
+    console.info(element);
+
+    const list = document.querySelectorAll("li");
+    console.info(list);
+
+    const classTest = document.querySelectorAll(".test-item");
+    console.info(classTest);
+
+    const id = document.querySelectorAll("#paraghraph");
+    console.info(id);
+
+    const elements = document.querySelectorAll("[class]");
+    console.info(elements);
+
+    const selectors = document.querySelectorAll("div[class^=aufa]");
+    console.info(selectors);
+  </script>
+</html>

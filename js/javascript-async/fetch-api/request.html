@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="username">Username</label>
+      <input
+        id="username"
+        name="username"
+        type="text"
+        autocomplete="username"
+      />
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        autocomplete="current-password"
+      />
+
+      <button id="login" type="button">Login</button>
+
+      <h1 id="response"></h1>
+    </form>
+
+    <script>
+      const doLogin = () => {
+        const request = new Request("", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            accept: "application/json",
+          },
+          body: JSON.stringify({
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+          }),
+        });
+
+        // PROMISE berisi OBJECT RESPONSE
+        const response = fetch(request);
+
+        response
+          .then((response) => response.json())
+          .then(function (json) {
+            document.getElementById("response").textContent = json.success;
+          });
+      };
+
+      document.getElementById("login").onclick(doLogin);
+    </script>
+  </body>
+</html>

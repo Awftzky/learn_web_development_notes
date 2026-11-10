@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text</title>
+  </head>
+  <body>
+    <p id="content">
+      <script>
+        console.info("Hello World");
+      </script>
+      <b>Aufa</b> Azzaky Arief
+    </p>
+    <script>
+      const content = document.getElementById("content");
+      console.info(content.textContent);
+      console.info(content.innerText); // HANYA TAKE YG DIDALAM ELEMENT TAG
+      console.info(content.innerHTML); // TAKE SEMUA
+
+      content.innerHTML = "<h1>Testing Inner HTML</h1>";
+    </script>
+  </body>
+</html>

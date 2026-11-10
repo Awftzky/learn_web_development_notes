@@ -1,1 +1,0 @@
-document.writeline("Hello Worldz");

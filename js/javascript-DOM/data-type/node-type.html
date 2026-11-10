@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node Type</title>
+  </head>
+  <body>
+    <h1>Node Type</h1>
+    <p id="message">Hello World</p>
+    <p id="result"></p>
+
+    <script>
+      const message = document.getElementById("message");
+      const text = message.firstChild;
+      const result = document.getElementById("result");
+
+      console.info(message.nodeType); // 1 = ELEMENT_NODE
+      console.info(text.nodeType); // 3 = TEXT_NODE
+
+      result.textContent = `Node element: ${message.nodeType}, node text: ${text.nodeType}`;
+    </script>
+  </body>
+</html>

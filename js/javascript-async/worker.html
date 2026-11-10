@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Worker</title>
+</head>
+<body>
+    <h1>Demo Web Worker</h1>
+    <p>
+        Klik tombol untuk menjalankan perhitungan berat di worker. Halaman tetap
+        responsif selama perhitungan berjalan.
+    </p>
+
+    <button id="start-button" type="button">Jalankan proses berat</button>
+    <p id="status" aria-live="polite">Siap.</p>
+    <p id="result"></p>
+
+    <script>
+        const startButton = document.querySelector("#start-button");
+        const status = document.querySelector("#status");
+        const result = document.querySelector("#result");
+        const worker = new Worker("./worker.js");
+
+        startButton.addEventListener("click", () => {
+            startButton.disabled = true;
+            status.textContent = "Perhitungan sedang berjalan di worker...";
+            result.textContent = "";
+
+            worker.postMessage(100_000_000);
+        });
+
+        worker.addEventListener("message", (event) => {
+            const { total, durationMs } = event.data;
+
+            status.textContent = "Perhitungan selesai.";
+            result.textContent = `Hasil: ${total} (selesai dalam ${durationMs.toFixed(2)} ms).`;
+            startButton.disabled = false;
+        });
+
+        worker.addEventListener("error", (event) => {
+            status.textContent = `Terjadi kesalahan pada worker: ${event.message}`;
+            startButton.disabled = false;
+        });
+    </script>
+</body>
+</html>

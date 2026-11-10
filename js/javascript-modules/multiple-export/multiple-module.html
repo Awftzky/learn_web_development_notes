@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple Module</title>
+  </head>
+  <body>
+    <h1>Multiple Module</h1>
+    <p id="company-name"></p>
+
+    <script type="module">
+      import { company, Company } from "./multiple.mjs";
+
+      const companyObject = new Company(company);
+      const companyName = companyObject.getName();
+
+      console.info(company);
+      console.info(companyName);
+
+      document.querySelector("#company-name").textContent = companyName;
+    </script>
+  </body>
+</html>

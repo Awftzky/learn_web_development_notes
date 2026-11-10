@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alias Module</title>
+  </head>
+  <body>
+    <h1 id="app-name"></h1>
+    <p id="greeting"></p>
+
+    <script type="module">
+      // applicationName adalah alias yang ditentukan di dalam export.
+      // Member adalah alias yang ditentukan di dalam import.
+      import { applicationName, User as Member } from "./alias.mjs";
+
+      const user = new Member("Aufa");
+
+      console.info(applicationName);
+      console.info(user.sayHello());
+
+      document.querySelector("#app-name").textContent = applicationName;
+      document.querySelector("#greeting").textContent = user.sayHello();
+
+      // Best practice: tentukan alias di dalam import agar nama asli export
+      // tetap konsisten dan setiap file bebas memilih alias yang dibutuhkan.
+    </script>
+  </body>
+</html>

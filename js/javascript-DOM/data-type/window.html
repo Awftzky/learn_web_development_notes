@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window</title>
+  </head>
+  <body>
+    <main>
+      <p id="content"></p>
+    </main>
+    <script>
+      const content = document.getElementById("content");
+
+      const height = window.screen.height;
+      const width = window.screen.width;
+      const url = window.location.href;
+
+      content.textContent = `Ukuran layar: ${width} x ${height}px | URL: ${url}`;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <table>
+    <tbody>
+        <tr>
+            <td>Id : </td>
+            <td id="id"></td>
+        </tr>
+        <tr>
+            <td>Name : </td>
+            <td id="name"></td>
+        </tr>
+        <tr>
+            <td>Price : </td>
+            <td id="price"></td>
+        </tr>
+    </tbody>
+  </table>
+  <body>
+    <script>
+        // PROMISE MEMILIKI 3 STATE YAITU PENDING, FULFILLED & REJECTED
+      const promise = new Promise(function (resolve, reject) {
+        const ajax = new XMLHttpRequest();
+        ajax.open("GET", "api/product.json");
+        ajax.onload = function () {
+          if (ajax.status == 200) {
+            resolve(ajax.responseText);
+          } else {
+            reject("ERROR GET PRODUCT");
+          }
+        };
+        ajax.send();
+      });
+
+      console.info(promise);
+    </script>
+  </body>
+</html>

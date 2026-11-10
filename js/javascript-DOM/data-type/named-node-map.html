@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NamedNodeMap</title>
+  </head>
+  <body>
+    <h1 id="title" class="heading" data-topic="DOM">Belajar NamedNodeMap</h1>
+    <ul id="attribute-list"></ul>
+
+    <script>
+      const title = document.getElementById("title");
+      const attributeList = document.getElementById("attribute-list");
+
+      // attributes menghasilkan NamedNodeMap.
+      const attributes = title.attributes;
+
+      // Setiap item di dalam NamedNodeMap merupakan object Attr.
+      for (const attribute of attributes) {
+        console.info(`${attribute.name}: ${attribute.value}`);
+
+        const listItem = document.createElement("li");
+        listItem.textContent = `${attribute.name}: ${attribute.value}`;
+        attributeList.appendChild(listItem);
+      }
+    </script>
+  </body>
+</html>
